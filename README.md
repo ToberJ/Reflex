@@ -48,11 +48,10 @@
 ## Citation
 
 ```bibtex
-@article{jia2026reflex,
+@misc{jia2026reflex,
   title   = {Reflex: Visually Grounded Reactive Humanoid Control},
   author  = {Jia, Taoyang and Huang, Weikai and Song, Linxin and Darlington, Jared and
              Zhao, Jieyu and Wang, Yue and Duan, Jiafei and Ren, Zhongzheng and Krishna, Ranjay},
-  journal = {arXiv preprint},
   year    = {2026}
 }
 ```
