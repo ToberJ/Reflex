@@ -1,0 +1,1217 @@
+{
+ "_note": "visual offsets per Isaac body (merge_fixed_joints=True); quat is wxyz",
+ "_default_bodies": [
+  "pelvis",
+  "left_hip_pitch_link",
+  "right_hip_pitch_link",
+  "waist_yaw_link",
+  "left_hip_roll_link",
+  "right_hip_roll_link",
+  "waist_roll_link",
+  "left_hip_yaw_link",
+  "right_hip_yaw_link",
+  "torso_link",
+  "left_knee_link",
+  "right_knee_link",
+  "left_shoulder_pitch_link",
+  "right_shoulder_pitch_link",
+  "left_ankle_pitch_link",
+  "right_ankle_pitch_link",
+  "left_shoulder_roll_link",
+  "right_shoulder_roll_link",
+  "left_ankle_roll_link",
+  "right_ankle_roll_link",
+  "left_shoulder_yaw_link",
+  "right_shoulder_yaw_link",
+  "left_elbow_link",
+  "right_elbow_link",
+  "left_wrist_roll_link",
+  "right_wrist_roll_link",
+  "left_wrist_pitch_link",
+  "right_wrist_pitch_link",
+  "left_wrist_yaw_link",
+  "right_wrist_yaw_link"
+ ],
+ "_links": {
+  "pelvis": [
+   {
+    "mesh": "pelvis.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "pelvis"
+   }
+  ],
+  "pelvis_contour_link": [
+   {
+    "mesh": "pelvis_contour_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "pelvis_contour_link"
+   }
+  ],
+  "left_hip_pitch_link": [
+   {
+    "mesh": "left_hip_pitch_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "left_hip_pitch_link"
+   }
+  ],
+  "left_hip_roll_link": [
+   {
+    "mesh": "left_hip_roll_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "left_hip_roll_link"
+   }
+  ],
+  "left_hip_yaw_link": [
+   {
+    "mesh": "left_hip_yaw_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "left_hip_yaw_link"
+   }
+  ],
+  "left_knee_link": [
+   {
+    "mesh": "left_knee_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "left_knee_link"
+   }
+  ],
+  "left_ankle_pitch_link": [
+   {
+    "mesh": "left_ankle_pitch_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "left_ankle_pitch_link"
+   }
+  ],
+  "left_ankle_roll_link": [
+   {
+    "mesh": "left_ankle_roll_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "left_ankle_roll_link"
+   }
+  ],
+  "right_hip_pitch_link": [
+   {
+    "mesh": "right_hip_pitch_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "right_hip_pitch_link"
+   }
+  ],
+  "right_hip_roll_link": [
+   {
+    "mesh": "right_hip_roll_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "right_hip_roll_link"
+   }
+  ],
+  "right_hip_yaw_link": [
+   {
+    "mesh": "right_hip_yaw_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "right_hip_yaw_link"
+   }
+  ],
+  "right_knee_link": [
+   {
+    "mesh": "right_knee_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "right_knee_link"
+   }
+  ],
+  "right_ankle_pitch_link": [
+   {
+    "mesh": "right_ankle_pitch_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "right_ankle_pitch_link"
+   }
+  ],
+  "right_ankle_roll_link": [
+   {
+    "mesh": "right_ankle_roll_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "right_ankle_roll_link"
+   }
+  ],
+  "waist_yaw_link": [
+   {
+    "mesh": "waist_yaw_link_rev_1_0.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "waist_yaw_link"
+   }
+  ],
+  "waist_roll_link": [
+   {
+    "mesh": "waist_roll_link_rev_1_0.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "waist_roll_link"
+   }
+  ],
+  "torso_link": [
+   {
+    "mesh": "torso_link_rev_1_0.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "torso_link"
+   }
+  ],
+  "logo_link": [
+   {
+    "mesh": "logo_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "logo_link"
+   }
+  ],
+  "head_link": [
+   {
+    "mesh": "head_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "head_link"
+   }
+  ],
+  "left_shoulder_pitch_link": [
+   {
+    "mesh": "left_shoulder_pitch_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "left_shoulder_pitch_link"
+   }
+  ],
+  "left_shoulder_roll_link": [
+   {
+    "mesh": "left_shoulder_roll_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "left_shoulder_roll_link"
+   }
+  ],
+  "left_shoulder_yaw_link": [
+   {
+    "mesh": "left_shoulder_yaw_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "left_shoulder_yaw_link"
+   }
+  ],
+  "left_elbow_link": [
+   {
+    "mesh": "left_elbow_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "left_elbow_link"
+   }
+  ],
+  "left_wrist_roll_link": [
+   {
+    "mesh": "left_wrist_roll_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "left_wrist_roll_link"
+   }
+  ],
+  "left_wrist_pitch_link": [
+   {
+    "mesh": "left_wrist_pitch_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "left_wrist_pitch_link"
+   }
+  ],
+  "left_wrist_yaw_link": [
+   {
+    "mesh": "left_wrist_yaw_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "left_wrist_yaw_link"
+   }
+  ],
+  "left_rubber_hand": [
+   {
+    "mesh": "left_rubber_hand.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "left_rubber_hand"
+   }
+  ],
+  "right_shoulder_pitch_link": [
+   {
+    "mesh": "right_shoulder_pitch_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "right_shoulder_pitch_link"
+   }
+  ],
+  "right_shoulder_roll_link": [
+   {
+    "mesh": "right_shoulder_roll_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "right_shoulder_roll_link"
+   }
+  ],
+  "right_shoulder_yaw_link": [
+   {
+    "mesh": "right_shoulder_yaw_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "right_shoulder_yaw_link"
+   }
+  ],
+  "right_elbow_link": [
+   {
+    "mesh": "right_elbow_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "right_elbow_link"
+   }
+  ],
+  "right_wrist_roll_link": [
+   {
+    "mesh": "right_wrist_roll_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "right_wrist_roll_link"
+   }
+  ],
+  "right_wrist_pitch_link": [
+   {
+    "mesh": "right_wrist_pitch_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "right_wrist_pitch_link"
+   }
+  ],
+  "right_wrist_yaw_link": [
+   {
+    "mesh": "right_wrist_yaw_link.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "right_wrist_yaw_link"
+   }
+  ],
+  "right_rubber_hand": [
+   {
+    "mesh": "right_rubber_hand.glb",
+    "pos": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "quat_wxyz": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "link": "right_rubber_hand"
+   }
+  ]
+ },
+ "pelvis": [
+  {
+   "mesh": "pelvis.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "pelvis"
+  },
+  {
+   "mesh": "pelvis_contour_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "pelvis_contour_link"
+  }
+ ],
+ "left_hip_pitch_link": [
+  {
+   "mesh": "left_hip_pitch_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "left_hip_pitch_link"
+  }
+ ],
+ "left_hip_roll_link": [
+  {
+   "mesh": "left_hip_roll_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "left_hip_roll_link"
+  }
+ ],
+ "left_hip_yaw_link": [
+  {
+   "mesh": "left_hip_yaw_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "left_hip_yaw_link"
+  }
+ ],
+ "left_knee_link": [
+  {
+   "mesh": "left_knee_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "left_knee_link"
+  }
+ ],
+ "left_ankle_pitch_link": [
+  {
+   "mesh": "left_ankle_pitch_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "left_ankle_pitch_link"
+  }
+ ],
+ "left_ankle_roll_link": [
+  {
+   "mesh": "left_ankle_roll_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "left_ankle_roll_link"
+  }
+ ],
+ "right_hip_pitch_link": [
+  {
+   "mesh": "right_hip_pitch_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "right_hip_pitch_link"
+  }
+ ],
+ "right_hip_roll_link": [
+  {
+   "mesh": "right_hip_roll_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "right_hip_roll_link"
+  }
+ ],
+ "right_hip_yaw_link": [
+  {
+   "mesh": "right_hip_yaw_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "right_hip_yaw_link"
+  }
+ ],
+ "right_knee_link": [
+  {
+   "mesh": "right_knee_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "right_knee_link"
+  }
+ ],
+ "right_ankle_pitch_link": [
+  {
+   "mesh": "right_ankle_pitch_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "right_ankle_pitch_link"
+  }
+ ],
+ "right_ankle_roll_link": [
+  {
+   "mesh": "right_ankle_roll_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "right_ankle_roll_link"
+  }
+ ],
+ "waist_yaw_link": [
+  {
+   "mesh": "waist_yaw_link_rev_1_0.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "waist_yaw_link"
+  }
+ ],
+ "waist_roll_link": [
+  {
+   "mesh": "waist_roll_link_rev_1_0.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "waist_roll_link"
+  }
+ ],
+ "torso_link": [
+  {
+   "mesh": "torso_link_rev_1_0.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "torso_link"
+  },
+  {
+   "mesh": "logo_link.glb",
+   "pos": [
+    0.003964,
+    0.0,
+    -0.044
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "logo_link"
+  },
+  {
+   "mesh": "head_link.glb",
+   "pos": [
+    0.003964,
+    0.0,
+    -0.044
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "head_link"
+  }
+ ],
+ "left_shoulder_pitch_link": [
+  {
+   "mesh": "left_shoulder_pitch_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "left_shoulder_pitch_link"
+  }
+ ],
+ "left_shoulder_roll_link": [
+  {
+   "mesh": "left_shoulder_roll_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "left_shoulder_roll_link"
+  }
+ ],
+ "left_shoulder_yaw_link": [
+  {
+   "mesh": "left_shoulder_yaw_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "left_shoulder_yaw_link"
+  }
+ ],
+ "left_elbow_link": [
+  {
+   "mesh": "left_elbow_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "left_elbow_link"
+  }
+ ],
+ "left_wrist_roll_link": [
+  {
+   "mesh": "left_wrist_roll_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "left_wrist_roll_link"
+  }
+ ],
+ "left_wrist_pitch_link": [
+  {
+   "mesh": "left_wrist_pitch_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "left_wrist_pitch_link"
+  }
+ ],
+ "left_wrist_yaw_link": [
+  {
+   "mesh": "left_wrist_yaw_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "left_wrist_yaw_link"
+  },
+  {
+   "mesh": "left_rubber_hand.glb",
+   "pos": [
+    0.0415,
+    0.003,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "left_rubber_hand"
+  }
+ ],
+ "right_shoulder_pitch_link": [
+  {
+   "mesh": "right_shoulder_pitch_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "right_shoulder_pitch_link"
+  }
+ ],
+ "right_shoulder_roll_link": [
+  {
+   "mesh": "right_shoulder_roll_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "right_shoulder_roll_link"
+  }
+ ],
+ "right_shoulder_yaw_link": [
+  {
+   "mesh": "right_shoulder_yaw_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "right_shoulder_yaw_link"
+  }
+ ],
+ "right_elbow_link": [
+  {
+   "mesh": "right_elbow_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "right_elbow_link"
+  }
+ ],
+ "right_wrist_roll_link": [
+  {
+   "mesh": "right_wrist_roll_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "right_wrist_roll_link"
+  }
+ ],
+ "right_wrist_pitch_link": [
+  {
+   "mesh": "right_wrist_pitch_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "right_wrist_pitch_link"
+  }
+ ],
+ "right_wrist_yaw_link": [
+  {
+   "mesh": "right_wrist_yaw_link.glb",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "right_wrist_yaw_link"
+  },
+  {
+   "mesh": "right_rubber_hand.glb",
+   "pos": [
+    0.0415,
+    -0.003,
+    0.0
+   ],
+   "quat_wxyz": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "link": "right_rubber_hand"
+  }
+ ]
+}

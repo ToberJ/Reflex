@@ -1,0 +1,4339 @@
+{
+ "fps": 25,
+ "bodies": [
+  "pelvis",
+  "left_hip_pitch_link",
+  "right_hip_pitch_link",
+  "waist_yaw_link",
+  "left_hip_roll_link",
+  "right_hip_roll_link",
+  "waist_roll_link",
+  "left_hip_yaw_link",
+  "right_hip_yaw_link",
+  "torso_link",
+  "left_knee_link",
+  "right_knee_link",
+  "left_shoulder_pitch_link",
+  "right_shoulder_pitch_link",
+  "left_ankle_pitch_link",
+  "right_ankle_pitch_link",
+  "left_shoulder_roll_link",
+  "right_shoulder_roll_link",
+  "left_ankle_roll_link",
+  "right_ankle_roll_link",
+  "left_shoulder_yaw_link",
+  "right_shoulder_yaw_link",
+  "left_elbow_link",
+  "right_elbow_link",
+  "left_wrist_roll_link",
+  "right_wrist_roll_link",
+  "left_wrist_pitch_link",
+  "right_wrist_pitch_link",
+  "left_wrist_yaw_link",
+  "right_wrist_yaw_link"
+ ],
+ "box_body_index": 30,
+ "controller_note": "Reflex with the visual encoder trained with throws up to 7 m, perception in the loop; wrist reflex keeps both palms up; simulated throws.",
+ "criteria": {
+  "chest": "box held in the chest region (paper's chest criterion, used for distance / payload / offset)",
+  "sustained": "box held until the episode ends without dropping (used for box size)"
+ },
+ "default": {
+  "distance": 3.25,
+  "distance_range": [
+   3.0,
+   3.5
+  ],
+  "size": "medium",
+  "mass": 0.18,
+  "offset": 0,
+  "why": "paper reference distance 3.0-3.5 m: at 2.5 m the arm trigger fires before the box is released in most throws"
+ },
+ "selection_note": "Each cell: n first throws (one per simulated env); stored replays = first 5 successes + first failure by env index. Rates are over all n.",
+ "cards": {
+  "size": {
+   "title": "Box Size",
+   "criterion": "sustained hold",
+   "options": [
+    {
+     "id": "small",
+     "label": "Small",
+     "sub": "22 x 21 x 15 cm",
+     "cell": "size_small"
+    },
+    {
+     "id": "medium",
+     "label": "Medium",
+     "sub": "34 x 26 x 22 cm",
+     "cell": "size_medium"
+    },
+    {
+     "id": "large",
+     "label": "Large",
+     "sub": "46 x 41 x 32 cm",
+     "cell": "size_large"
+    }
+   ]
+  },
+  "distance": {
+   "title": "Throw Distance",
+   "criterion": "chest",
+   "options": [
+    {
+     "id": "2.5",
+     "label": "2.5 m",
+     "sub": "2.25-2.75 m",
+     "cell": "dist_2.5"
+    },
+    {
+     "id": "5.0",
+     "label": "5 m",
+     "sub": "4.75-5.25 m",
+     "cell": "dist_5.0"
+    },
+    {
+     "id": "7.0",
+     "label": "7 m",
+     "sub": "6.75-7.25 m",
+     "cell": "dist_7.0"
+    }
+   ]
+  },
+  "payload": {
+   "title": "Payload",
+   "criterion": "chest",
+   "options": [
+    {
+     "id": "0.5",
+     "label": "0.5 kg",
+     "sub": "",
+     "cell": "mass_0.5"
+    },
+    {
+     "id": "1.0",
+     "label": "1 kg",
+     "sub": "",
+     "cell": "mass_1.0"
+    },
+    {
+     "id": "2.0",
+     "label": "2 kg",
+     "sub": "",
+     "cell": "mass_2.0"
+    }
+   ]
+  },
+  "offset": {
+   "title": "Lateral Offset",
+   "criterion": "chest",
+   "options": [
+    {
+     "id": "0.3",
+     "label": "0.3 m",
+     "cell": "off_0.3"
+    },
+    {
+     "id": "0.7",
+     "label": "0.7 m",
+     "cell": "off_0.7"
+    },
+    {
+     "id": "1.0",
+     "label": "1.0 m",
+     "cell": "off_1.0"
+    }
+   ]
+  }
+ },
+ "cells": {
+  "size_small": {
+   "params": {
+    "distance": 3.25,
+    "distance_range": [
+     3.0,
+     3.5
+    ],
+    "size": "small",
+    "mass": 0.18,
+    "offset": 0.0,
+    "half_extents": [
+     0.11,
+     0.105,
+     0.075
+    ],
+    "mass_kg_range": [
+     0.144,
+     0.216
+    ],
+    "launch_dist_m": [
+     2.8,
+     3.874
+    ]
+   },
+   "run": "PGY_REF_SZS_s8",
+   "envs": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95
+   ],
+   "n": 96,
+   "caught": 39,
+   "rate": 40.6,
+   "criterion": "sustained",
+   "other_criterion": {
+    "chest": 37
+   },
+   "stored": {
+    "caught_envs": [
+     0,
+     8,
+     11,
+     13,
+     16
+    ],
+    "miss_env": 1,
+    "rule": "first 5 CLEAN catches by env index (sustained hold, arms down until release, box on the forearms) + first failure"
+   },
+   "throws": [
+    {
+     "k": 1,
+     "env": 0,
+     "file": "traj/_REF_SZS_s8_e0.bin",
+     "frames": 104,
+     "outcome": "caught",
+     "outcome_t": 1.72,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -0.507,
+       -5.083,
+       1.326
+      ],
+      "v": [
+       0.686,
+       4.67,
+       6.296
+      ],
+      "dist_m": 3.334,
+      "speed_mps": 7.869
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.11,
+      0.105,
+      0.075
+     ],
+     "box_mass_kg": 0.153,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.094,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 2,
+     "env": 8,
+     "file": "traj/_REF_SZS_s8_e8.bin",
+     "frames": 98,
+     "outcome": "caught",
+     "outcome_t": 1.48,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -4.725,
+       0.574,
+       1.476
+      ],
+      "v": [
+       4.213,
+       -0.315,
+       4.374
+      ],
+      "dist_m": 3.122,
+      "speed_mps": 6.329
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.11,
+      0.105,
+      0.075
+     ],
+     "box_mass_kg": 0.185,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.09,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 3,
+     "env": 11,
+     "file": "traj/_REF_SZS_s8_e11.bin",
+     "frames": 103,
+     "outcome": "caught",
+     "outcome_t": 1.68,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       4.807,
+       1.639,
+       1.577
+      ],
+      "v": [
+       -4.353,
+       -1.828,
+       5.593
+      ],
+      "dist_m": 3.456,
+      "speed_mps": 7.597
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.11,
+      0.105,
+      0.075
+     ],
+     "box_mass_kg": 0.177,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.048,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 4,
+     "env": 13,
+     "file": "traj/_REF_SZS_s8_e13.bin",
+     "frames": 106,
+     "outcome": "caught",
+     "outcome_t": 1.8,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       4.235,
+       2.312,
+       1.344
+      ],
+      "v": [
+       -3.339,
+       -2.007,
+       6.586
+      ],
+      "dist_m": 3.277,
+      "speed_mps": 7.954
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.11,
+      0.105,
+      0.075
+     ],
+     "box_mass_kg": 0.178,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.043,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 5,
+     "env": 16,
+     "file": "traj/_REF_SZS_s8_e16.bin",
+     "frames": 104,
+     "outcome": "caught",
+     "outcome_t": 1.72,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       3.147,
+       3.603,
+       1.497
+      ],
+      "v": [
+       -3.446,
+       -3.148,
+       5.888
+      ],
+      "dist_m": 3.273,
+      "speed_mps": 7.798
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.11,
+      0.105,
+      0.075
+     ],
+     "box_mass_kg": 0.197,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.117,
+      "intercepted": true
+     }
+    }
+   ]
+  },
+  "size_medium": {
+   "params": {
+    "distance": 3.25,
+    "distance_range": [
+     3.0,
+     3.5
+    ],
+    "size": "medium",
+    "mass": 0.18,
+    "offset": 0.0,
+    "half_extents": [
+     0.17,
+     0.13,
+     0.11
+    ],
+    "mass_kg_range": [
+     0.145,
+     0.216
+    ],
+    "launch_dist_m": [
+     2.649,
+     3.75
+    ]
+   },
+   "run": "PGY_REF_M_s8",
+   "envs": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47
+   ],
+   "n": 48,
+   "caught": 42,
+   "rate": 87.5,
+   "criterion": "sustained",
+   "other_criterion": {
+    "chest": 40
+   },
+   "stored": {
+    "caught_envs": [
+     1,
+     2,
+     3,
+     6,
+     7
+    ],
+    "miss_env": 0,
+    "rule": "first 5 CLEAN catches by env index (sustained hold, arms down until release, box on the forearms) + first failure"
+   },
+   "throws": [
+    {
+     "k": 1,
+     "env": 1,
+     "file": "traj/_REF_M_s8_e1.bin",
+     "frames": 104,
+     "outcome": "caught",
+     "outcome_t": 1.72,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -3.161,
+       -3.857,
+       1.468
+      ],
+      "v": [
+       3.003,
+       3.447,
+       6.024
+      ],
+      "dist_m": 3.403,
+      "speed_mps": 7.563
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.15,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.089,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 2,
+     "env": 2,
+     "file": "traj/_REF_M_s8_e2.bin",
+     "frames": 99,
+     "outcome": "caught",
+     "outcome_t": 1.52,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       0.329,
+       -5.049,
+       1.181
+      ],
+      "v": [
+       -0.657,
+       5.592,
+       5.105
+      ],
+      "dist_m": 3.495,
+      "speed_mps": 7.6
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.177,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.026,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 3,
+     "env": 3,
+     "file": "traj/_REF_M_s8_e3.bin",
+     "frames": 107,
+     "outcome": "caught",
+     "outcome_t": 1.84,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       4.561,
+       1.488,
+       1.448
+      ],
+      "v": [
+       -4.111,
+       -1.678,
+       6.924
+      ],
+      "dist_m": 3.146,
+      "speed_mps": 8.225
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.197,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.041,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 4,
+     "env": 6,
+     "file": "traj/_REF_M_s8_e6.bin",
+     "frames": 104,
+     "outcome": "caught",
+     "outcome_t": 1.72,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       1.512,
+       -4.323,
+       1.349
+      ],
+      "v": [
+       -1.846,
+       3.366,
+       5.899
+      ],
+      "dist_m": 3.168,
+      "speed_mps": 7.325
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.202,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.099,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 5,
+     "env": 7,
+     "file": "traj/_REF_M_s8_e7.bin",
+     "frames": 102,
+     "outcome": "caught",
+     "outcome_t": 1.64,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       4.99,
+       0.575,
+       1.595
+      ],
+      "v": [
+       -4.808,
+       -1.245,
+       5.252
+      ],
+      "dist_m": 3.414,
+      "speed_mps": 7.498
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.165,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.057,
+      "intercepted": true
+     }
+    }
+   ]
+  },
+  "size_large": {
+   "params": {
+    "distance": 3.25,
+    "distance_range": [
+     3.0,
+     3.5
+    ],
+    "size": "large",
+    "mass": 0.18,
+    "offset": 0.0,
+    "half_extents": [
+     0.23,
+     0.205,
+     0.16
+    ],
+    "mass_kg_range": [
+     0.145,
+     0.216
+    ],
+    "launch_dist_m": [
+     2.654,
+     3.923
+    ]
+   },
+   "run": "PGY_REF_SZL_s8",
+   "envs": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47
+   ],
+   "n": 48,
+   "caught": 25,
+   "rate": 52.1,
+   "criterion": "sustained",
+   "other_criterion": {
+    "chest": 0
+   },
+   "stored": {
+    "caught_envs": [
+     2,
+     3,
+     4,
+     5,
+     7
+    ],
+    "miss_env": 0,
+    "rule": "first 5 CLEAN catches by env index (sustained hold, arms down until release, box on the forearms) + first failure"
+   },
+   "throws": [
+    {
+     "k": 1,
+     "env": 2,
+     "file": "traj/_REF_SZL_s8_e2.bin",
+     "frames": 99,
+     "outcome": "caught",
+     "outcome_t": 1.52,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       0.328,
+       -5.05,
+       1.181
+      ],
+      "v": [
+       -0.657,
+       5.593,
+       5.103
+      ],
+      "dist_m": 3.504,
+      "speed_mps": 7.6
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.23,
+      0.205,
+      0.16
+     ],
+     "box_mass_kg": 0.177,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": false,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.027,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 2,
+     "env": 3,
+     "file": "traj/_REF_SZL_s8_e3.bin",
+     "frames": 107,
+     "outcome": "caught",
+     "outcome_t": 1.84,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       4.561,
+       1.487,
+       1.448
+      ],
+      "v": [
+       -4.113,
+       -1.676,
+       6.926
+      ],
+      "dist_m": 3.147,
+      "speed_mps": 8.228
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.23,
+      0.205,
+      0.16
+     ],
+     "box_mass_kg": 0.197,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": false,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.047,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 3,
+     "env": 4,
+     "file": "traj/_REF_SZL_s8_e4.bin",
+     "frames": 105,
+     "outcome": "caught",
+     "outcome_t": 1.76,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -1.749,
+       -4.499,
+       1.371
+      ],
+      "v": [
+       1.338,
+       4.003,
+       6.194
+      ],
+      "dist_m": 3.242,
+      "speed_mps": 7.788
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.23,
+      0.205,
+      0.16
+     ],
+     "box_mass_kg": 0.181,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": false,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.064,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 4,
+     "env": 5,
+     "file": "traj/_REF_SZL_s8_e5.bin",
+     "frames": 106,
+     "outcome": "caught",
+     "outcome_t": 1.8,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       4.308,
+       2.604,
+       1.67
+      ],
+      "v": [
+       -4.272,
+       -2.374,
+       6.023
+      ],
+      "dist_m": 3.609,
+      "speed_mps": 8.044
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.23,
+      0.205,
+      0.16
+     ],
+     "box_mass_kg": 0.19,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": false,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.078,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 5,
+     "env": 7,
+     "file": "traj/_REF_SZL_s8_e7.bin",
+     "frames": 103,
+     "outcome": "caught",
+     "outcome_t": 1.68,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       4.989,
+       0.569,
+       1.599
+      ],
+      "v": [
+       -4.833,
+       -1.664,
+       5.417
+      ],
+      "dist_m": 3.557,
+      "speed_mps": 7.721
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.23,
+      0.205,
+      0.16
+     ],
+     "box_mass_kg": 0.165,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": false,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.103,
+      "intercepted": true
+     }
+    }
+   ]
+  },
+  "dist_2.5": {
+   "params": {
+    "distance": 2.5,
+    "distance_range": [
+     2.25,
+     2.75
+    ],
+    "size": "medium",
+    "mass": 0.18,
+    "offset": 0.0,
+    "half_extents": [
+     0.17,
+     0.13,
+     0.11
+    ],
+    "mass_kg_range": [
+     0.145,
+     0.216
+    ],
+    "launch_dist_m": [
+     2.083,
+     2.883
+    ]
+   },
+   "run": "PGY_D25_M_s8",
+   "envs": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47
+   ],
+   "n": 48,
+   "caught": 46,
+   "rate": 95.8,
+   "criterion": "chest",
+   "other_criterion": {
+    "sustained": 46
+   },
+   "stored": {
+    "caught_envs": [
+     15,
+     17,
+     21,
+     25,
+     28
+    ],
+    "miss_env": 7,
+    "rule": "first 5 CLEAN catches by env index (sustained hold, arms down until release, box on the forearms) + first failure"
+   },
+   "throws": [
+    {
+     "k": 1,
+     "env": 15,
+     "file": "traj/_D25_M_s8_e15.bin",
+     "frames": 104,
+     "outcome": "caught",
+     "outcome_t": 1.72,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -3.459,
+       2.502,
+       1.579
+      ],
+      "v": [
+       2.679,
+       -2.29,
+       5.658
+      ],
+      "dist_m": 2.808,
+      "speed_mps": 6.949
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.147,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.057,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 2,
+     "env": 17,
+     "file": "traj/_D25_M_s8_e17.bin",
+     "frames": 102,
+     "outcome": "caught",
+     "outcome_t": 1.64,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       4.128,
+       0.059,
+       1.296
+      ],
+      "v": [
+       -3.818,
+       0.021,
+       5.822
+      ],
+      "dist_m": 2.643,
+      "speed_mps": 6.962
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.151,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.064,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 3,
+     "env": 21,
+     "file": "traj/_D25_M_s8_e21.bin",
+     "frames": 97,
+     "outcome": "caught",
+     "outcome_t": 1.44,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       2.11,
+       -3.692,
+       1.62
+      ],
+      "v": [
+       -1.62,
+       3.598,
+       3.829
+      ],
+      "dist_m": 2.616,
+      "speed_mps": 5.732
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.206,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.039,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 4,
+     "env": 25,
+     "file": "traj/_D25_M_s8_e25.bin",
+     "frames": 101,
+     "outcome": "caught",
+     "outcome_t": 1.6,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -4.262,
+       -0.159,
+       1.496
+      ],
+      "v": [
+       3.75,
+       0.056,
+       4.967
+      ],
+      "dist_m": 2.853,
+      "speed_mps": 6.49
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.205,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.017,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 5,
+     "env": 28,
+     "file": "traj/_D25_M_s8_e28.bin",
+     "frames": 99,
+     "outcome": "caught",
+     "outcome_t": 1.52,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       1.904,
+       -3.694,
+       1.301
+      ],
+      "v": [
+       -1.774,
+       3.528,
+       4.922
+      ],
+      "dist_m": 2.678,
+      "speed_mps": 6.31
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.188,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.075,
+      "intercepted": true
+     }
+    }
+   ]
+  },
+  "dist_5.0": {
+   "params": {
+    "distance": 5.0,
+    "distance_range": [
+     4.75,
+     5.25
+    ],
+    "size": "medium",
+    "mass": 0.18,
+    "offset": 0.0,
+    "half_extents": [
+     0.17,
+     0.13,
+     0.11
+    ],
+    "mass_kg_range": [
+     0.145,
+     0.216
+    ],
+    "launch_dist_m": [
+     4.368,
+     5.616
+    ]
+   },
+   "run": "PGY_D50_M_s8",
+   "envs": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47
+   ],
+   "n": 48,
+   "caught": 40,
+   "rate": 83.3,
+   "criterion": "chest",
+   "other_criterion": {
+    "sustained": 40
+   },
+   "stored": {
+    "caught_envs": [
+     0,
+     2,
+     3,
+     10,
+     11
+    ],
+    "miss_env": 6,
+    "rule": "first 5 CLEAN catches by env index (sustained hold, arms down until release, box on the forearms) + first failure"
+   },
+   "throws": [
+    {
+     "k": 1,
+     "env": 0,
+     "file": "traj/_D50_M_s8_e0.bin",
+     "frames": 112,
+     "outcome": "caught",
+     "outcome_t": 2.04,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       0.072,
+       -6.858,
+       1.566
+      ],
+      "v": [
+       -0.445,
+       6.556,
+       7.891
+      ],
+      "dist_m": 5.304,
+      "speed_mps": 10.269
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.213,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.113,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 2,
+     "env": 2,
+     "file": "traj/_D50_M_s8_e2.bin",
+     "frames": 110,
+     "outcome": "caught",
+     "outcome_t": 1.96,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       1.741,
+       -6.476,
+       1.491
+      ],
+      "v": [
+       -1.913,
+       5.156,
+       7.308
+      ],
+      "dist_m": 4.935,
+      "speed_mps": 9.147
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.177,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.017,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 3,
+     "env": 3,
+     "file": "traj/_D50_M_s8_e3.bin",
+     "frames": 113,
+     "outcome": "caught",
+     "outcome_t": 2.08,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       6.404,
+       1.581,
+       1.435
+      ],
+      "v": [
+       -6.39,
+       -1.013,
+       8.394
+      ],
+      "dist_m": 5.17,
+      "speed_mps": 10.937
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.197,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.061,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 4,
+     "env": 10,
+     "file": "traj/_D50_M_s8_e10.bin",
+     "frames": 111,
+     "outcome": "caught",
+     "outcome_t": 2.0,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       5.799,
+       -2.951,
+       1.531
+      ],
+      "v": [
+       -4.929,
+       2.378,
+       7.755
+      ],
+      "dist_m": 4.927,
+      "speed_mps": 9.817
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.18,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.079,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 5,
+     "env": 11,
+     "file": "traj/_D50_M_s8_e11.bin",
+     "frames": 111,
+     "outcome": "caught",
+     "outcome_t": 2.0,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       6.291,
+       2.516,
+       1.278
+      ],
+      "v": [
+       -5.424,
+       -2.5,
+       8.156
+      ],
+      "dist_m": 4.945,
+      "speed_mps": 10.109
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.161,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.044,
+      "intercepted": true
+     }
+    }
+   ]
+  },
+  "dist_7.0": {
+   "params": {
+    "distance": 7.0,
+    "distance_range": [
+     6.75,
+     7.25
+    ],
+    "size": "medium",
+    "mass": 0.18,
+    "offset": 0.0,
+    "half_extents": [
+     0.17,
+     0.13,
+     0.11
+    ],
+    "mass_kg_range": [
+     0.145,
+     0.216
+    ],
+    "launch_dist_m": [
+     6.051,
+     7.515
+    ]
+   },
+   "run": "PGY_D70_M_s8",
+   "envs": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47
+   ],
+   "n": 48,
+   "caught": 19,
+   "rate": 39.6,
+   "criterion": "chest",
+   "other_criterion": {
+    "sustained": 20
+   },
+   "stored": {
+    "caught_envs": [
+     2,
+     4,
+     5,
+     9,
+     10
+    ],
+    "miss_env": 0,
+    "rule": "first 5 CLEAN catches by env index (sustained hold, arms down until release, box on the forearms) + first failure"
+   },
+   "throws": [
+    {
+     "k": 1,
+     "env": 2,
+     "file": "traj/_D70_M_s8_e2.bin",
+     "frames": 116,
+     "outcome": "caught",
+     "outcome_t": 2.2,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -1.459,
+       -8.726,
+       1.557
+      ],
+      "v": [
+       1.496,
+       8.033,
+       9.233
+      ],
+      "dist_m": 7.23,
+      "speed_mps": 12.329
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.177,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.125,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 2,
+     "env": 4,
+     "file": "traj/_D70_M_s8_e4.bin",
+     "frames": 112,
+     "outcome": "caught",
+     "outcome_t": 2.04,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -5.796,
+       -6.551,
+       1.331
+      ],
+      "v": [
+       5.499,
+       5.914,
+       8.4
+      ],
+      "dist_m": 7.156,
+      "speed_mps": 11.995
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.181,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.16,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 3,
+     "env": 5,
+     "file": "traj/_D70_M_s8_e5.bin",
+     "frames": 115,
+     "outcome": "caught",
+     "outcome_t": 2.16,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       7.609,
+       4.292,
+       1.368
+      ],
+      "v": [
+       -5.876,
+       -2.545,
+       8.797
+      ],
+      "dist_m": 6.069,
+      "speed_mps": 10.88
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.19,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.091,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 4,
+     "env": 9,
+     "file": "traj/_D70_M_s8_e9.bin",
+     "frames": 115,
+     "outcome": "caught",
+     "outcome_t": 2.16,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -3.975,
+       7.775,
+       1.366
+      ],
+      "v": [
+       3.343,
+       -6.641,
+       8.93
+      ],
+      "dist_m": 7.026,
+      "speed_mps": 11.62
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.172,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.054,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 5,
+     "env": 10,
+     "file": "traj/_D70_M_s8_e10.bin",
+     "frames": 115,
+     "outcome": "caught",
+     "outcome_t": 2.16,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       7.524,
+       -4.616,
+       1.513
+      ],
+      "v": [
+       -7.698,
+       3.688,
+       8.875
+      ],
+      "dist_m": 7.515,
+      "speed_mps": 12.314
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.18,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.096,
+      "intercepted": true
+     }
+    }
+   ]
+  },
+  "mass_0.18": {
+   "params": {
+    "distance": 3.25,
+    "distance_range": [
+     3.0,
+     3.5
+    ],
+    "size": "medium",
+    "mass": 0.18,
+    "offset": 0.0,
+    "half_extents": [
+     0.17,
+     0.13,
+     0.11
+    ],
+    "mass_kg_range": [
+     0.145,
+     0.216
+    ],
+    "launch_dist_m": [
+     2.649,
+     3.75
+    ]
+   },
+   "run": "PGY_REF_M_s8",
+   "envs": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47
+   ],
+   "n": 48,
+   "caught": 40,
+   "rate": 83.3,
+   "criterion": "chest",
+   "other_criterion": {
+    "sustained": 42
+   },
+   "stored": {
+    "caught_envs": [
+     1,
+     2,
+     3,
+     6,
+     7
+    ],
+    "miss_env": 0,
+    "rule": "first 5 CLEAN catches by env index (sustained hold, arms down until release, box on the forearms) + first failure"
+   },
+   "throws": [
+    {
+     "k": 1,
+     "env": 1,
+     "file": "traj/_REF_M_s8_e1.bin",
+     "frames": 104,
+     "outcome": "caught",
+     "outcome_t": 1.72,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -3.161,
+       -3.857,
+       1.468
+      ],
+      "v": [
+       3.003,
+       3.447,
+       6.024
+      ],
+      "dist_m": 3.403,
+      "speed_mps": 7.563
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.15,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.089,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 2,
+     "env": 2,
+     "file": "traj/_REF_M_s8_e2.bin",
+     "frames": 99,
+     "outcome": "caught",
+     "outcome_t": 1.52,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       0.329,
+       -5.049,
+       1.181
+      ],
+      "v": [
+       -0.657,
+       5.592,
+       5.105
+      ],
+      "dist_m": 3.495,
+      "speed_mps": 7.6
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.177,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.026,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 3,
+     "env": 3,
+     "file": "traj/_REF_M_s8_e3.bin",
+     "frames": 107,
+     "outcome": "caught",
+     "outcome_t": 1.84,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       4.561,
+       1.488,
+       1.448
+      ],
+      "v": [
+       -4.111,
+       -1.678,
+       6.924
+      ],
+      "dist_m": 3.146,
+      "speed_mps": 8.225
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.197,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.041,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 4,
+     "env": 6,
+     "file": "traj/_REF_M_s8_e6.bin",
+     "frames": 104,
+     "outcome": "caught",
+     "outcome_t": 1.72,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       1.512,
+       -4.323,
+       1.349
+      ],
+      "v": [
+       -1.846,
+       3.366,
+       5.899
+      ],
+      "dist_m": 3.168,
+      "speed_mps": 7.325
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.202,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.099,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 5,
+     "env": 7,
+     "file": "traj/_REF_M_s8_e7.bin",
+     "frames": 102,
+     "outcome": "caught",
+     "outcome_t": 1.64,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       4.99,
+       0.575,
+       1.595
+      ],
+      "v": [
+       -4.808,
+       -1.245,
+       5.252
+      ],
+      "dist_m": 3.414,
+      "speed_mps": 7.498
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.165,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.057,
+      "intercepted": true
+     }
+    }
+   ]
+  },
+  "mass_0.5": {
+   "params": {
+    "distance": 3.25,
+    "distance_range": [
+     3.0,
+     3.5
+    ],
+    "size": "medium",
+    "mass": 0.5,
+    "offset": 0.0,
+    "half_extents": [
+     0.17,
+     0.13,
+     0.11
+    ],
+    "mass_kg_range": [
+     0.5,
+     0.5
+    ],
+    "launch_dist_m": [
+     2.659,
+     3.968
+    ]
+   },
+   "run": "PGY_REF_W05_s8",
+   "envs": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47
+   ],
+   "n": 48,
+   "caught": 41,
+   "rate": 85.4,
+   "criterion": "chest",
+   "other_criterion": {
+    "sustained": 43
+   },
+   "stored": {
+    "caught_envs": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "miss_env": 0,
+    "rule": "first 5 CLEAN catches by env index (sustained hold, arms down until release, box on the forearms) + first failure"
+   },
+   "throws": [
+    {
+     "k": 1,
+     "env": 1,
+     "file": "traj/_REF_W05_s8_e1.bin",
+     "frames": 104,
+     "outcome": "caught",
+     "outcome_t": 1.72,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -3.161,
+       -3.857,
+       1.468
+      ],
+      "v": [
+       3.004,
+       3.447,
+       6.025
+      ],
+      "dist_m": 3.404,
+      "speed_mps": 7.564
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.5,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.064,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 2,
+     "env": 2,
+     "file": "traj/_REF_W05_s8_e2.bin",
+     "frames": 99,
+     "outcome": "caught",
+     "outcome_t": 1.52,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       0.329,
+       -5.049,
+       1.181
+      ],
+      "v": [
+       -0.664,
+       5.592,
+       5.104
+      ],
+      "dist_m": 3.502,
+      "speed_mps": 7.6
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.5,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.021,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 3,
+     "env": 3,
+     "file": "traj/_REF_W05_s8_e3.bin",
+     "frames": 107,
+     "outcome": "caught",
+     "outcome_t": 1.84,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       4.561,
+       1.487,
+       1.448
+      ],
+      "v": [
+       -4.11,
+       -1.678,
+       6.923
+      ],
+      "dist_m": 3.145,
+      "speed_mps": 8.224
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.5,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.039,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 4,
+     "env": 4,
+     "file": "traj/_REF_W05_s8_e4.bin",
+     "frames": 104,
+     "outcome": "caught",
+     "outcome_t": 1.72,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -1.75,
+       -4.499,
+       1.371
+      ],
+      "v": [
+       1.341,
+       3.988,
+       6.179
+      ],
+      "dist_m": 3.228,
+      "speed_mps": 7.768
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.5,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": false,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.041,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 5,
+     "env": 5,
+     "file": "traj/_REF_W05_s8_e5.bin",
+     "frames": 105,
+     "outcome": "caught",
+     "outcome_t": 1.76,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       4.307,
+       2.603,
+       1.67
+      ],
+      "v": [
+       -4.284,
+       -2.37,
+       6.032
+      ],
+      "dist_m": 3.617,
+      "speed_mps": 8.056
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.5,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.024,
+      "intercepted": true
+     }
+    }
+   ]
+  },
+  "mass_1.0": {
+   "params": {
+    "distance": 3.25,
+    "distance_range": [
+     3.0,
+     3.5
+    ],
+    "size": "medium",
+    "mass": 1.0,
+    "offset": 0.0,
+    "half_extents": [
+     0.17,
+     0.13,
+     0.11
+    ],
+    "mass_kg_range": [
+     1.0,
+     1.0
+    ],
+    "launch_dist_m": [
+     2.642,
+     3.706
+    ]
+   },
+   "run": "PGY_REF_W10_s8",
+   "envs": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47
+   ],
+   "n": 48,
+   "caught": 43,
+   "rate": 89.6,
+   "criterion": "chest",
+   "other_criterion": {
+    "sustained": 43
+   },
+   "stored": {
+    "caught_envs": [
+     1,
+     2,
+     3,
+     6,
+     7
+    ],
+    "miss_env": 0,
+    "rule": "first 5 CLEAN catches by env index (sustained hold, arms down until release, box on the forearms) + first failure"
+   },
+   "throws": [
+    {
+     "k": 1,
+     "env": 1,
+     "file": "traj/_REF_W10_s8_e1.bin",
+     "frames": 104,
+     "outcome": "caught",
+     "outcome_t": 1.72,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -3.161,
+       -3.857,
+       1.468
+      ],
+      "v": [
+       3.002,
+       3.446,
+       6.023
+      ],
+      "dist_m": 3.402,
+      "speed_mps": 7.561
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 1.0,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.059,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 2,
+     "env": 2,
+     "file": "traj/_REF_W10_s8_e2.bin",
+     "frames": 99,
+     "outcome": "caught",
+     "outcome_t": 1.52,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       0.329,
+       -5.049,
+       1.181
+      ],
+      "v": [
+       -0.665,
+       5.592,
+       5.104
+      ],
+      "dist_m": 3.503,
+      "speed_mps": 7.6
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 1.0,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.03,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 3,
+     "env": 3,
+     "file": "traj/_REF_W10_s8_e3.bin",
+     "frames": 107,
+     "outcome": "caught",
+     "outcome_t": 1.84,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       4.561,
+       1.487,
+       1.448
+      ],
+      "v": [
+       -4.107,
+       -1.678,
+       6.92
+      ],
+      "dist_m": 3.143,
+      "speed_mps": 8.22
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 1.0,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.038,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 4,
+     "env": 6,
+     "file": "traj/_REF_W10_s8_e6.bin",
+     "frames": 104,
+     "outcome": "caught",
+     "outcome_t": 1.72,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       1.512,
+       -4.323,
+       1.349
+      ],
+      "v": [
+       -1.847,
+       3.36,
+       5.893
+      ],
+      "dist_m": 3.163,
+      "speed_mps": 7.317
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 1.0,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.086,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 5,
+     "env": 7,
+     "file": "traj/_REF_W10_s8_e7.bin",
+     "frames": 102,
+     "outcome": "caught",
+     "outcome_t": 1.64,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       4.989,
+       0.571,
+       1.598
+      ],
+      "v": [
+       -4.863,
+       -1.456,
+       5.378
+      ],
+      "dist_m": 3.523,
+      "speed_mps": 7.667
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 1.0,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.035,
+      "intercepted": true
+     }
+    }
+   ]
+  },
+  "mass_2.0": {
+   "params": {
+    "distance": 3.25,
+    "distance_range": [
+     3.0,
+     3.5
+    ],
+    "size": "medium",
+    "mass": 2.0,
+    "offset": 0.0,
+    "half_extents": [
+     0.17,
+     0.13,
+     0.11
+    ],
+    "mass_kg_range": [
+     2.0,
+     2.0
+    ],
+    "launch_dist_m": [
+     2.659,
+     3.776
+    ]
+   },
+   "run": "PGY_REF_W20_s8",
+   "envs": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47
+   ],
+   "n": 48,
+   "caught": 36,
+   "rate": 75.0,
+   "criterion": "chest",
+   "other_criterion": {
+    "sustained": 37
+   },
+   "stored": {
+    "caught_envs": [
+     2,
+     10,
+     11,
+     16,
+     17
+    ],
+    "miss_env": 0,
+    "rule": "first 5 CLEAN catches by env index (sustained hold, arms down until release, box on the forearms) + first failure"
+   },
+   "throws": [
+    {
+     "k": 1,
+     "env": 2,
+     "file": "traj/_REF_W20_s8_e2.bin",
+     "frames": 99,
+     "outcome": "caught",
+     "outcome_t": 1.52,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       0.329,
+       -5.049,
+       1.181
+      ],
+      "v": [
+       -0.664,
+       5.592,
+       5.103
+      ],
+      "dist_m": 3.503,
+      "speed_mps": 7.6
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 2.0,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.017,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 2,
+     "env": 10,
+     "file": "traj/_REF_W20_s8_e10.bin",
+     "frames": 104,
+     "outcome": "caught",
+     "outcome_t": 1.72,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       3.841,
+       -2.817,
+       1.432
+      ],
+      "v": [
+       -3.328,
+       2.578,
+       6.147
+      ],
+      "dist_m": 3.063,
+      "speed_mps": 7.742
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 2.0,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.094,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 3,
+     "env": 11,
+     "file": "traj/_REF_W20_s8_e11.bin",
+     "frames": 103,
+     "outcome": "caught",
+     "outcome_t": 1.68,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       4.714,
+       1.64,
+       1.385
+      ],
+      "v": [
+       -4.093,
+       -1.336,
+       5.648
+      ],
+      "dist_m": 3.435,
+      "speed_mps": 7.382
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 2.0,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.018,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 4,
+     "env": 16,
+     "file": "traj/_REF_W20_s8_e16.bin",
+     "frames": 103,
+     "outcome": "caught",
+     "outcome_t": 1.68,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       2.518,
+       4.363,
+       1.153
+      ],
+      "v": [
+       -2.535,
+       -4.107,
+       6.239
+      ],
+      "dist_m": 3.331,
+      "speed_mps": 7.888
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 2.0,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.077,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 5,
+     "env": 17,
+     "file": "traj/_REF_W20_s8_e17.bin",
+     "frames": 106,
+     "outcome": "caught",
+     "outcome_t": 1.8,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       4.804,
+       1.041,
+       1.283
+      ],
+      "v": [
+       -4.35,
+       -1.208,
+       6.69
+      ],
+      "dist_m": 3.279,
+      "speed_mps": 8.071
+     },
+     "aim_offset_m": 0.0,
+     "aim_side": null,
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 2.0,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.087,
+      "intercepted": true
+     }
+    }
+   ]
+  },
+  "off_0.3": {
+   "params": {
+    "distance": 3.25,
+    "distance_range": [
+     3.0,
+     3.5
+    ],
+    "size": "medium",
+    "mass": 0.18,
+    "offset": 0.3,
+    "half_extents": [
+     0.17,
+     0.13,
+     0.11
+    ],
+    "mass_kg_range": [
+     0.144,
+     0.215
+    ],
+    "aim_offset_at_launch_m": [
+     0.253,
+     0.35
+    ],
+    "launch_dist_m": [
+     2.874,
+     3.768
+    ]
+   },
+   "run": "PGY_REF_OFFX_s8",
+   "envs": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119
+   ],
+   "n": 120,
+   "caught": 101,
+   "rate": 84.2,
+   "criterion": "chest",
+   "other_criterion": {
+    "sustained": 101
+   },
+   "stored": {
+    "caught_envs": [
+     3,
+     4,
+     6,
+     8,
+     9
+    ],
+    "miss_env": 0,
+    "rule": "first 5 CLEAN catches by env index (sustained hold, arms down until release, box on the forearms) + first failure"
+   },
+   "throws": [
+    {
+     "k": 1,
+     "env": 3,
+     "file": "traj/_REF_OFFX_s8_e3.bin",
+     "frames": 104,
+     "outcome": "caught",
+     "outcome_t": 1.72,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       4.74,
+       1.817,
+       1.28
+      ],
+      "v": [
+       -4.409,
+       -2.154,
+       6.293
+      ],
+      "dist_m": 3.316,
+      "speed_mps": 7.98
+     },
+     "aim_offset_m": 0.289,
+     "aim_side": "right",
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.213,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.032,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 2,
+     "env": 4,
+     "file": "traj/_REF_OFFX_s8_e4.bin",
+     "frames": 104,
+     "outcome": "caught",
+     "outcome_t": 1.72,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -1.994,
+       -4.592,
+       1.511
+      ],
+      "v": [
+       1.885,
+       4.539,
+       5.726
+      ],
+      "dist_m": 3.477,
+      "speed_mps": 7.547
+     },
+     "aim_offset_m": 0.288,
+     "aim_side": "left",
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.15,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.062,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 3,
+     "env": 6,
+     "file": "traj/_REF_OFFX_s8_e6.bin",
+     "frames": 102,
+     "outcome": "caught",
+     "outcome_t": 1.64,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       0.747,
+       -4.928,
+       1.481
+      ],
+      "v": [
+       -0.791,
+       4.653,
+       5.28
+      ],
+      "dist_m": 3.446,
+      "speed_mps": 7.082
+     },
+     "aim_offset_m": 0.338,
+     "aim_side": "left",
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.208,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.065,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 4,
+     "env": 8,
+     "file": "traj/_REF_OFFX_s8_e8.bin",
+     "frames": 105,
+     "outcome": "caught",
+     "outcome_t": 1.76,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -4.843,
+       0.895,
+       1.164
+      ],
+      "v": [
+       4.301,
+       -0.391,
+       6.606
+      ],
+      "dist_m": 3.423,
+      "speed_mps": 7.893
+     },
+     "aim_offset_m": 0.283,
+     "aim_side": "right",
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.209,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.077,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 5,
+     "env": 9,
+     "file": "traj/_REF_OFFX_s8_e9.bin",
+     "frames": 106,
+     "outcome": "caught",
+     "outcome_t": 1.8,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -2.406,
+       4.324,
+       1.534
+      ],
+      "v": [
+       2.481,
+       -4.017,
+       6.363
+      ],
+      "dist_m": 3.467,
+      "speed_mps": 8.219
+     },
+     "aim_offset_m": 0.279,
+     "aim_side": "left",
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.197,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.088,
+      "intercepted": true
+     }
+    }
+   ]
+  },
+  "off_0.7": {
+   "params": {
+    "distance": 3.25,
+    "distance_range": [
+     3.0,
+     3.5
+    ],
+    "size": "medium",
+    "mass": 0.18,
+    "offset": 0.7,
+    "half_extents": [
+     0.17,
+     0.13,
+     0.11
+    ],
+    "mass_kg_range": [
+     0.144,
+     0.216
+    ],
+    "aim_offset_at_launch_m": [
+     0.652,
+     0.75
+    ],
+    "launch_dist_m": [
+     2.692,
+     3.722
+    ]
+   },
+   "run": "PGY_REF_OFFX_s8",
+   "envs": [
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129,
+    130,
+    131,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147,
+    148,
+    149,
+    150,
+    151,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157,
+    158,
+    159,
+    160,
+    161,
+    162,
+    163,
+    164,
+    165,
+    166,
+    167,
+    168,
+    169,
+    170,
+    171,
+    172,
+    173,
+    174,
+    175,
+    176,
+    177,
+    178,
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185,
+    186,
+    187,
+    188,
+    189,
+    190,
+    191,
+    192,
+    193,
+    194,
+    195,
+    196,
+    197,
+    198,
+    199,
+    200,
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219,
+    220,
+    221,
+    222,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231,
+    232,
+    233,
+    234,
+    235,
+    236,
+    237,
+    238,
+    239
+   ],
+   "n": 120,
+   "caught": 73,
+   "rate": 60.8,
+   "criterion": "chest",
+   "other_criterion": {
+    "sustained": 75
+   },
+   "stored": {
+    "caught_envs": [
+     120,
+     121,
+     122,
+     124,
+     125
+    ],
+    "miss_env": 123,
+    "rule": "first 5 CLEAN catches by env index (sustained hold, arms down until release, box on the forearms) + first failure"
+   },
+   "throws": [
+    {
+     "k": 1,
+     "env": 120,
+     "file": "traj/_REF_OFFX_s8_e120.bin",
+     "frames": 105,
+     "outcome": "caught",
+     "outcome_t": 1.76,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -4.087,
+       2.055,
+       1.486
+      ],
+      "v": [
+       3.635,
+       -2.627,
+       6.303
+      ],
+      "dist_m": 3.141,
+      "speed_mps": 8.03
+     },
+     "aim_offset_m": 0.688,
+     "aim_side": "left",
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.165,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.084,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 2,
+     "env": 121,
+     "file": "traj/_REF_OFFX_s8_e121.bin",
+     "frames": 104,
+     "outcome": "caught",
+     "outcome_t": 1.72,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       4.877,
+       1.043,
+       1.231
+      ],
+      "v": [
+       -3.858,
+       -1.7,
+       6.214
+      ],
+      "dist_m": 3.25,
+      "speed_mps": 7.802
+     },
+     "aim_offset_m": 0.697,
+     "aim_side": "right",
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.208,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.016,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 3,
+     "env": 122,
+     "file": "traj/_REF_OFFX_s8_e122.bin",
+     "frames": 104,
+     "outcome": "caught",
+     "outcome_t": 1.72,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -1.626,
+       -4.575,
+       1.276
+      ],
+      "v": [
+       1.593,
+       4.755,
+       6.326
+      ],
+      "dist_m": 3.302,
+      "speed_mps": 8.073
+     },
+     "aim_offset_m": 0.724,
+     "aim_side": "right",
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.193,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.034,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 4,
+     "env": 124,
+     "file": "traj/_REF_OFFX_s8_e124.bin",
+     "frames": 104,
+     "outcome": "caught",
+     "outcome_t": 1.72,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -0.372,
+       -4.945,
+       1.415
+      ],
+      "v": [
+       0.459,
+       5.045,
+       6.106
+      ],
+      "dist_m": 3.288,
+      "speed_mps": 7.934
+     },
+     "aim_offset_m": 0.712,
+     "aim_side": "right",
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.205,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.174,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 5,
+     "env": 125,
+     "file": "traj/_REF_OFFX_s8_e125.bin",
+     "frames": 108,
+     "outcome": "caught",
+     "outcome_t": 1.88,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -1.62,
+       4.605,
+       1.224
+      ],
+      "v": [
+       1.138,
+       -4.069,
+       7.313
+      ],
+      "dist_m": 3.223,
+      "speed_mps": 8.445
+     },
+     "aim_offset_m": 0.652,
+     "aim_side": "left",
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.176,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.052,
+      "intercepted": true
+     }
+    }
+   ]
+  },
+  "off_1.0": {
+   "params": {
+    "distance": 3.25,
+    "distance_range": [
+     3.0,
+     3.5
+    ],
+    "size": "medium",
+    "mass": 0.18,
+    "offset": 1.0,
+    "half_extents": [
+     0.17,
+     0.13,
+     0.11
+    ],
+    "mass_kg_range": [
+     0.145,
+     0.216
+    ],
+    "aim_offset_at_launch_m": [
+     0.951,
+     1.049
+    ],
+    "launch_dist_m": [
+     2.85,
+     3.751
+    ]
+   },
+   "run": "PGY_REF_OFFX_s8",
+   "envs": [
+    240,
+    241,
+    242,
+    243,
+    244,
+    245,
+    246,
+    247,
+    248,
+    249,
+    250,
+    251,
+    252,
+    253,
+    254,
+    255,
+    256,
+    257,
+    258,
+    259,
+    260,
+    261,
+    262,
+    263,
+    264,
+    265,
+    266,
+    267,
+    268,
+    269,
+    270,
+    271,
+    272,
+    273,
+    274,
+    275,
+    276,
+    277,
+    278,
+    279,
+    280,
+    281,
+    282,
+    283,
+    284,
+    285,
+    286,
+    287,
+    288,
+    289,
+    290,
+    291,
+    292,
+    293,
+    294,
+    295,
+    296,
+    297,
+    298,
+    299,
+    300,
+    301,
+    302,
+    303,
+    304,
+    305,
+    306,
+    307,
+    308,
+    309,
+    310,
+    311,
+    312,
+    313,
+    314,
+    315,
+    316,
+    317,
+    318,
+    319,
+    320,
+    321,
+    322,
+    323,
+    324,
+    325,
+    326,
+    327,
+    328,
+    329,
+    330,
+    331,
+    332,
+    333,
+    334,
+    335,
+    336,
+    337,
+    338,
+    339,
+    340,
+    341,
+    342,
+    343,
+    344,
+    345,
+    346,
+    347,
+    348,
+    349,
+    350,
+    351,
+    352,
+    353,
+    354,
+    355,
+    356,
+    357,
+    358,
+    359
+   ],
+   "n": 120,
+   "caught": 33,
+   "rate": 27.5,
+   "criterion": "chest",
+   "other_criterion": {
+    "sustained": 33
+   },
+   "stored": {
+    "caught_envs": [
+     245,
+     255,
+     256,
+     257,
+     260
+    ],
+    "miss_env": 240,
+    "rule": "first 5 CLEAN catches by env index (sustained hold, arms down until release, box on the forearms) + first failure"
+   },
+   "throws": [
+    {
+     "k": 1,
+     "env": 245,
+     "file": "traj/_REF_OFFX_s8_e245.bin",
+     "frames": 106,
+     "outcome": "caught",
+     "outcome_t": 1.8,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -0.842,
+       -4.871,
+       1.56
+      ],
+      "v": [
+       0.163,
+       4.658,
+       6.38
+      ],
+      "dist_m": 3.502,
+      "speed_mps": 8.197
+     },
+     "aim_offset_m": 0.961,
+     "aim_side": "right",
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.173,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.022,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 2,
+     "env": 255,
+     "file": "traj/_REF_OFFX_s8_e255.bin",
+     "frames": 102,
+     "outcome": "caught",
+     "outcome_t": 1.64,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -0.925,
+       4.889,
+       1.23
+      ],
+      "v": [
+       0.593,
+       -4.845,
+       5.859
+      ],
+      "dist_m": 3.369,
+      "speed_mps": 7.909
+     },
+     "aim_offset_m": 0.979,
+     "aim_side": "left",
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.181,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.146,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 3,
+     "env": 256,
+     "file": "traj/_REF_OFFX_s8_e256.bin",
+     "frames": 106,
+     "outcome": "caught",
+     "outcome_t": 1.8,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -1.325,
+       4.897,
+       1.2
+      ],
+      "v": [
+       0.942,
+       -4.739,
+       6.708
+      ],
+      "dist_m": 3.524,
+      "speed_mps": 8.267
+     },
+     "aim_offset_m": 0.996,
+     "aim_side": "left",
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.181,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.082,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 4,
+     "env": 257,
+     "file": "traj/_REF_OFFX_s8_e257.bin",
+     "frames": 107,
+     "outcome": "caught",
+     "outcome_t": 1.84,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -3.816,
+       3.402,
+       1.664
+      ],
+      "v": [
+       2.821,
+       -3.695,
+       6.537
+      ],
+      "dist_m": 3.567,
+      "speed_mps": 8.321
+     },
+     "aim_offset_m": 0.987,
+     "aim_side": "left",
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.212,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.062,
+      "intercepted": true
+     }
+    },
+    {
+     "k": 5,
+     "env": 260,
+     "file": "traj/_REF_OFFX_s8_e260.bin",
+     "frames": 108,
+     "outcome": "caught",
+     "outcome_t": 1.88,
+     "launch": {
+      "t": 0.48,
+      "p": [
+       -5.0,
+       -0.323,
+       1.467
+      ],
+      "v": [
+       3.954,
+       -1.129,
+       6.619
+      ],
+      "dist_m": 3.116,
+      "speed_mps": 8.094
+     },
+     "aim_offset_m": 1.029,
+     "aim_side": "left",
+     "box_half_extents": [
+      0.17,
+      0.13,
+      0.11
+     ],
+     "box_mass_kg": 0.193,
+     "box_color": "#c8a165",
+     "flags": {
+      "caught_chest": true,
+      "caught_twin": true,
+      "sustained_ok": true,
+      "dropped_after": false,
+      "fell": false,
+      "end_v": 0.089,
+      "intercepted": true
+     }
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,192 @@
+/* Reflex project page — layout follows the Nerfies/LadderMan academic template (Bulma). */
+:root { --text: #363636; --muted: #4a4a4a; --card-shadow: 0 4px 14px rgba(0, 0, 0, 0.12); --mono: 'IBM Plex Mono', monospace; }
+body { font-family: 'Noto Sans', sans-serif; color: var(--muted); background: #fff; }
+.title, .subtitle { font-family: 'Noto Sans', sans-serif; }
+
+/* ---------- hero: full-screen teaser ---------- */
+.hero-video-section { position: relative; overflow: hidden; background: #111; }
+.teaser-bg { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 101%; height: 101%; object-fit: cover; z-index: 0; }
+.hero-shade { position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(ellipse 60% 36% at 50% 50%, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0) 100%),
+              linear-gradient(to top, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) 22%); }
+.hero-video-section .hero-body { position: relative; z-index: 2; display: flex; align-items: center; }
+.hero-title { font-size: 5rem; font-weight: 700; color: #fff; line-height: 1.1; text-shadow: 2px 3px 10px rgba(0, 0, 0, 0.75); letter-spacing: 0.02em; }
+.hero-subtitle { font-size: 2.6rem; font-weight: 600; color: #fff; margin-top: 0.6rem; text-shadow: 2px 3px 10px rgba(0, 0, 0, 0.75); }
+.hero-tagline { position: absolute; left: 22px; bottom: 22px; z-index: 3; color: #fff; font-size: 1.2rem; line-height: 1.45; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.85); }
+
+.model-name { font-family: var(--mono); font-weight: 600; letter-spacing: 0; }
+.hero-icon { height: 1.7em; width: auto; vertical-align: -0.42em; margin-right: 0.2em; filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.9)) drop-shadow(2px 3px 8px rgba(0, 0, 0, 0.7)); }
+
+/* ---------- authors + link buttons ---------- */
+.authors-section { padding-bottom: 1.5rem; }
+.author-block { display: inline-block; margin: 0 0.12rem; }
+/* authors / affiliations styled like Nerfies / OmniRetarget: Google Sans, light-blue name links */
+.publication-authors { font-family: 'Google Sans', 'Noto Sans', sans-serif; color: #4a4a4a; line-height: 1.55; }
+.publication-authors a { color: hsl(204, 86%, 53%) !important; font-weight: 400; }
+.publication-authors a:hover { text-decoration: underline; }
+.publication-affils { margin-top: 0.35rem; }
+.equal-note { font-family: 'Google Sans', 'Noto Sans', sans-serif; font-style: italic; color: #4a4a4a; font-size: 1.05rem; margin-top: 0.5rem; }
+.publication-links { margin-top: 1.2rem; }
+.link-block { display: inline-block; margin: 0.3rem 0.25rem; }
+.link-block .button { font-weight: 600; }
+.is-static-soon { cursor: default; opacity: 0.85; }
+.is-static-soon .soon { font-family: var(--mono); font-size: 0.68rem; font-weight: 400; margin-left: 0.45rem; opacity: 0.75; }
+
+/* ---------- content ---------- */
+.section { padding: 3rem 1.5rem; }
+.title.is-3 { color: var(--text); font-size: 2rem; margin-bottom: 2rem; }
+.narrow { width: 100%; margin: 0 auto 1.5rem; }   /* same width as the video grids (user: less side white space) */
+.abstract-text { font-size: 0.97rem; line-height: 1.6; }
+.figure-wide { text-align: center; margin-top: 1.5rem; }
+.figure-wide img { width: 100%; height: auto; }
+
+/* ---------- video cards: one uniform 16:9 grid (OmniRetarget-style) ---------- */
+.video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 1rem 0; }
+.video-card { background: #fff; border-radius: 6px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
+.video-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); }
+.video-card.is-wide { grid-column: 1 / -1; }
+.video-card video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #111; }
+.video-caption { text-align: center; font-weight: 600; color: #333; font-size: 0.9rem; line-height: 1.3; padding: 0.75rem; margin: 0; }
+.inset-note { text-align: center; font-family: var(--mono); font-size: 0.8rem; color: #888; margin-top: 0.4rem; }
+
+/* ---------- results plot ---------- */
+.plot-box { width: 90%; max-width: 1100px; height: 480px; margin: 0 auto; }
+
+/* ---------- bibtex + footer ---------- */
+pre { background: #f5f5f5; border-radius: 6px; }
+.footer { background: #fafafa; padding: 2rem 1.5rem; font-size: 0.9rem; }
+.dnerf { font-variant: small-caps; }
+
+/* ---------- mobile ---------- */
+@media screen and (max-width: 900px) {
+  .hero-video-section.is-fullheight { min-height: 62vh; }
+  .hero-title { font-size: 3rem; }
+  .hero-subtitle { font-size: 1.35rem; }
+  .hero-tagline { font-size: 0.85rem; left: 12px; bottom: 12px; }
+  .narrow, .figure-wide img { width: 100%; }
+  .video-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+  .plot-box { width: 100%; height: 420px; }
+  .title.is-3 { font-size: 1.5rem; }
+}
+.plot-fig img { max-width: 960px; }
+/* real-robot video sections use more of wide screens (user: landscape cards were too small next to the empty margins) */
+.section.wide > .container { max-width: min(94vw, 1760px) !important; }
+.section.wide .video-card.is-wide { width: 100%; max-width: 1344px; justify-self: center; }   /* wide composites keep their previous size */
+/* emphasis under each real-robot heading (user): the robot only uses its own onboard camera */
+.title.is-3 + .ego-only { margin-top: -1.3rem; }
+.ego-only { text-align: center; font-weight: 800; font-size: 1.6rem; color: #6b4fa0; letter-spacing: 0.01em; margin-bottom: 1.6rem; }
+.ego-only i { font-size: 0.85em; margin-right: 0.35rem; }
+.link-block .soon { margin-left: 0.35rem; font-weight: 400; font-size: 0.85em; opacity: 0.85; }
+/* show-egocentric-view button + expandable panel (user 2026-10-08) */
+.ego-wrap { text-align: center; margin-top: 1.1rem; }
+.ego-toggle { font-family: inherit; font-size: 0.95rem; font-weight: 600; color: #6b4fa0; background: #fff; border: 1.5px solid #6b4fa0; border-radius: 999px; padding: 0.45rem 1.1rem; cursor: pointer; transition: background 0.15s, color 0.15s; }
+.ego-toggle:hover, .ego-toggle[aria-expanded="true"] { background: #6b4fa0; color: #fff; }
+.ego-toggle i { margin-right: 0.3rem; }
+.ego-panel { margin: 1rem auto 0; padding: 1.1rem; border: 2px solid #e7e1f2; border-radius: 12px; background: #faf9fc; }
+.ego-grid { display: grid; gap: 1.2rem; }
+.ego-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.ego-grid.cols-1 { grid-template-columns: minmax(0, 720px); justify-content: center; }
+.ego-item { margin: 0; }
+.ego-item video { width: 100%; height: auto; display: block; border-radius: 8px; background: #111; }
+.ego-item figcaption { font-size: 0.85rem; color: #555; margin-top: 0.45rem; }
+@media screen and (max-width: 900px) { .ego-grid.cols-3 { grid-template-columns: 1fr; } }
+.ego-toggle { font-size: 1.15rem; padding: 0.65rem 1.6rem; border-width: 2px; }
+.payload-grid { margin-top: 1.6rem; }
+.abstract-main { font-size: 1.12rem; line-height: 1.65; }   /* user: abstract one size larger */
+.section.wide .figure-wide:not(.plot-fig) img { width: 85%; }   /* user: method figure one size smaller than full width */
+
+/* ======================================================================================
+   Phone / tablet layout (2026-10-08). Desktop is final: every rule below sits inside a
+   max-width / touch-only media query (or targets .fig-open, which is display:none on desktop).
+   ====================================================================================== */
+.fig-open { display: none; }   /* "open full-size figure" links: phones only */
+
+/* tablets and phones (<= 900 px) */
+@media screen and (max-width: 900px) {
+  .title.is-3 { font-size: 1.75rem; margin-bottom: 1.6rem; }
+  .title.is-3 + .ego-only { margin-top: -1rem; }
+  .ego-only { font-size: 1.35rem; margin-bottom: 1.3rem; }
+  .fig-open { display: flex; width: fit-content; align-items: center; gap: 0.4rem; min-height: 44px; margin: 0.3rem auto 0; padding: 0 0.9rem;
+    font-size: 0.9rem; font-weight: 600; color: #6b4fa0; }
+  .fig-open:hover { text-decoration: underline; color: #6b4fa0; }
+}
+
+/* touch devices and narrow screens: the demo hint should speak touch, not mouse */
+@media screen and (max-width: 900px), (hover: none) and (pointer: coarse) {
+  #playground-section .pg-hint { font-size: 0; }
+  #playground-section .pg-hint::after { content: 'drag to orbit \00b7  pinch to zoom \00b7  t = 0 at release'; font-size: 0.75rem; }
+}
+
+/* phones (<= 600 px) */
+@media screen and (max-width: 600px) {
+  .section { padding: 2.25rem 1rem; }
+  .section.wide > .container { max-width: none !important; }
+
+  /* hero */
+  .hero-title { font-size: 2.8rem; }
+  .hero-subtitle { font-size: 1.25rem; line-height: 1.3; margin-top: 0.5rem; padding: 0 0.5rem; }
+  .hero-tagline { left: 14px; right: 14px; bottom: 14px; font-size: 0.82rem; line-height: 1.4; }
+
+  /* authors, affiliations, buttons */
+  .authors-section { padding-top: 1.75rem; padding-bottom: 1rem; }
+  .publication-authors { font-size: 1.12rem !important; line-height: 1.6; }
+  .publication-authors br { display: none; }
+  .author-block { margin: 0 0.15rem; }
+  .publication-affils { font-size: 0.92rem !important; line-height: 1.5; margin-top: 0.6rem; }
+  .equal-note { font-size: 0.88rem; }
+  .publication-links { margin-top: 0.9rem; }
+  .link-block { margin: 0.3rem 0.2rem; }
+  .link-block .button { height: auto; min-height: 44px; font-size: 0.95rem; padding-left: 1.1em; padding-right: 1.1em; }
+
+  /* abstract + body text: left-aligned (justified text makes rivers on a 360 px column) */
+  .title.is-2 { font-size: 2rem; margin-bottom: 1.1rem; }
+  .content.narrow.has-text-justified { text-align: left !important; }
+  .abstract-text { font-size: 0.95rem; }
+  .abstract-text.abstract-main { font-size: 1rem; line-height: 1.65; }
+
+  /* paper figures: full bleed (edge to edge) + a link to the full-resolution image */
+  .section.wide .figure-wide { margin-left: -1rem; margin-right: -1rem; }
+  .section.wide .figure-wide img, .section.wide .figure-wide:not(.plot-fig) img { width: 100%; max-width: none; }
+
+  /* section headings + emphasis line */
+  .title.is-3 { font-size: 1.4rem; line-height: 1.3; margin-bottom: 1.2rem; }
+  .title.is-3 + .ego-only { margin-top: -0.6rem; }
+  .ego-only { font-size: 1.25rem; margin-bottom: 1rem; }
+
+  /* video cards */
+  .video-grid { gap: 1rem; }
+  .video-card:hover { transform: none; }
+  .video-caption { font-size: 0.85rem; padding: 0.6rem 0.7rem; }
+  .inset-note { font-size: 0.72rem; }
+
+  /* egocentric-view toggle + panel */
+  .ego-wrap { margin-top: 1rem; }
+  .ego-toggle { font-size: 1rem; min-height: 44px; padding: 0.55rem 1.25rem; }
+  .ego-panel { padding: 0.7rem; border-radius: 10px; }
+  .ego-grid { gap: 0.9rem; }
+  .ego-item figcaption { font-size: 0.8rem; margin-top: 0.3rem; }
+  .payload-grid { margin-top: 1.25rem; }
+
+  /* BibTeX: scroll inside the block only, smaller mono text */
+  #BibTeX .title { font-size: 1.6rem; }
+  #BibTeX pre { font-size: 0.7rem; padding: 0.9rem 1rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .footer { padding: 1.5rem 1rem; }
+}
+
+/* ---------- phones/tablets: stacked header like LadderMan's mobile page (user 2026-10-08) ----------
+   desktop keeps the full-screen teaser; <= 900 px: purple title banner, "Teaser" heading, the whole 16:9 teaser
+   as a rounded card (nothing cropped), tagline underneath. Same <video> element, so no second download. */
+.mobile-teaser-title { display: none; }
+@media screen and (max-width: 900px) {
+  .hero-video-section, .hero-video-section.is-fullheight { display: flex; flex-direction: column; min-height: 0 !important; height: auto; background: #fff; overflow: visible; }
+  .hero-shade { display: none; }
+  .hero-video-section .hero-body { order: 1; flex: 0 0 auto; background: #6b4fa0; padding: 1.7rem 1rem 1.5rem; }
+  .hero-title { font-size: 2.6rem; text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.35); }
+  .hero-subtitle { font-size: 1.2rem; line-height: 1.3; margin-top: 0.45rem; text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.35); }
+  .hero-icon { filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.9)); }
+  .mobile-teaser-title { display: block; order: 2; text-align: center; font-weight: 700; font-size: 1.6rem; color: #363636; margin: 1.6rem 0 0.9rem; }
+  .teaser-bg { order: 3; position: relative; top: auto; left: auto; transform: none; width: calc(100% - 32px); height: auto;
+               aspect-ratio: 16 / 9; margin: 0 16px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18); }
+  .hero-tagline { order: 4; position: static; color: #4a4a4a; text-shadow: none; text-align: center; font-size: 1rem; line-height: 1.5;
+                  padding: 0.9rem 16px 0; left: auto; right: auto; bottom: auto; }
+}

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reflex: Visually Grounded Reactive Humanoid Control</title>
+  <meta name="description" content="Reflex: a humanoid catches human-thrown boxes with coordinated whole-body motion from onboard RGB-D.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="icon" type="image/png" href="static/images/favicon.png?v=1008n">
+  <link rel="stylesheet" href="static/css/index.css?v=1008u">
+</head>
+<body>
+
+<!-- ============ HERO: full-screen teaser ============ -->
+<section class="hero is-fullheight hero-video-section">
+  <video class="teaser-bg" playsinline autoplay muted loop preload="metadata" poster="static/images/teaser_poster.jpg?v=1008t">
+    <source src="static/videos/teaser.mp4?v=1008t" type="video/mp4">
+  </video>
+  <div class="hero-shade"></div>
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="hero-title"><img class="hero-icon" src="static/images/reflex_icon.png?v=1008n" alt=""><span class="model-name">Reflex</span></h1>
+      <h2 class="hero-subtitle">Visually Grounded Reactive Humanoid Control</h2>
+    </div>
+  </div>
+  <h3 class="mobile-teaser-title">Teaser</h3>   <!-- phones/tablets only (LadderMan-style stacked header); display:none on desktop -->
+  <div class="hero-tagline">
+    Human-thrown boxes. Whole-body catching.<br>
+    Onboard <u>RGB-D</u> sensing. About one second to react.
+  </div>
+</section>
+
+<!-- ============ AUTHORS + LINKS ============ -->
+<section class="section authors-section">
+  <div class="container has-text-centered">
+    <div class="is-size-4 publication-authors">
+      <span class="author-block"><a href="https://toberj.github.io/" target="_blank">Taoyang Jia</a><sup>*1,2</sup>,</span>
+      <span class="author-block"><a href="https://weikaih04.github.io/" target="_blank">Weikai Huang</a><sup>*1</sup>,</span>
+      <span class="author-block"><a href="https://linxins.net/" target="_blank">Linxin Song</a><sup>*3</sup>,</span>
+      <span class="author-block"><a href="https://jareddarlington.github.io/" target="_blank">Jared Darlington</a><sup>1</sup>,</span><br>
+      <span class="author-block"><a href="https://jyzhao.net/" target="_blank">Jieyu Zhao</a><sup>3</sup>,</span>
+      <span class="author-block"><a href="https://yuewang.xyz/" target="_blank">Yue Wang</a><sup>3</sup>,</span>
+      <span class="author-block"><a href="https://jiafei1224.github.io/" target="_blank">Jiafei Duan</a><sup>4</sup>,</span>
+      <span class="author-block"><a href="https://jason718.github.io/" target="_blank">Zhongzheng Ren</a><sup>5,6</sup>,</span>
+      <span class="author-block"><a href="https://ranjaykrishna.com/index.html" target="_blank">Ranjay Krishna</a><sup>1</sup></span>
+    </div>
+    <div class="is-size-4 publication-authors publication-affils">
+      <span class="author-block"><sup>1</sup>University of Washington,</span>
+      <span class="author-block"><sup>2</sup>Stanford University,</span>
+      <span class="author-block"><sup>3</sup>University of Southern California,</span><br>
+      <span class="author-block"><sup>4</sup>National University of Singapore,</span>
+      <span class="author-block"><sup>5</sup>University of North Carolina at Chapel Hill,</span>
+      <span class="author-block"><sup>6</sup>Allen Institute for AI</span>
+    </div>
+    <div class="equal-note"><sup>*</sup> Equal contribution.</div>
+    <div class="publication-links">
+      <span class="link-block"><a class="button is-dark is-rounded" href="static/paper/reflex.pdf?v=1008n" target="_blank">
+        <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span></a></span>
+      <span class="link-block"><a class="button is-dark is-rounded" href="static/videos/teaser.mp4?v=1008t" target="_blank">
+        <span class="icon"><i class="fas fa-video"></i></span><span>Video</span></a></span>
+      <span class="link-block"><a class="button is-dark is-rounded" href="https://github.com/ToberJ/reflex" target="_blank">
+        <span class="icon"><i class="fab fa-github"></i></span><span>Code</span><span class="soon">(coming soon)</span></a></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABSTRACT + METHOD FIGURE ============ -->
+<section class="section wide">
+  <div class="container">
+    <h2 class="title is-2 has-text-centered">Abstract</h2>
+    <div class="content narrow has-text-justified">
+      <p class="abstract-text abstract-main">
+        Humans effortlessly react to the world; they adeptly return a tennis shot, catch a falling cup, step aside from a passing cart, or pass a box tossed during truck unloading. These everyday actions require anticipating a moving target and reflexively responding with the whole body within about a second. Such visual reactive whole-body control remains challenging for humanoids, which must (1) coordinate whole-body control, (2) react to object dynamics in real time, and (3) ground perception in egocentric vision. We study catching thrown boxes as a representative task that demands all three capabilities; existing systems cover only part of it, relying on end-effectors, motion capture, or marked objects.
+        We present <strong>Reflex</strong>, a three-stage framework that learns these capabilities stage by stage while connecting them through a compact representation of object dynamics. First, a state-based policy learns whole-body catching with reinforcement learning. Second, the policy learns to infer the dynamics of a moving box from delayed and incomplete observations. Third, an egocentric RGB-D encoder learns to recover this dynamics representation directly from visual observations while keeping the whole-body controller fixed. This decomposition provides each capability with a direct training signal and makes visual learning substantially more scalable.
+        In simulation, <strong>Reflex</strong> achieves 85.7% catch success from egocentric RGB-D, compared with 87.9% when given privileged box observations. Temporal visual history is critical: removing it reduces success by 35.6 and 39.8 points on centered and laterally offset throws. On a real Unitree G1, <strong>Reflex</strong> catches human-thrown boxes with 65% and 40% success at 2.5 and 5&nbsp;m, reaching 76% and 59% of human catchers' success at the same distances.
+      </p>
+    </div>
+    <div class="figure-wide"><img src="static/images/method.png?v=1008n" alt="Reflex three-stage training framework" loading="lazy"><a class="fig-open" href="static/images/method.png?v=1008n" target="_blank" rel="noopener"><i class="fas fa-magnifying-glass-plus"></i> Open full-size figure</a></div>
+  </div>
+</section>
+
+<!-- ============ DISTANCE ============ -->
+<section class="section wide" id="demos">
+  <div class="container">
+    <h3 class="title is-3 has-text-centered">Reflex catches boxes thrown from 2.5 to 7 meters</h3>
+    <p class="ego-only"><i class="fas fa-video"></i> Egocentric only</p>
+    <div class="video-grid">
+      <div class="video-card">
+        <video id="m-pip_dist_2m" poster="static/images/posters/pip_dist_2m.jpg?v=1008n" playsinline autoplay muted loop preload="metadata"><source src="static/videos/pip_dist_2m.mp4?v=1008n" type="video/mp4"></video>
+        <p class="video-caption">2.5 m throw</p></div>
+      <div class="video-card">
+        <video id="m-pip_dist_5m" poster="static/images/posters/pip_dist_5m.jpg?v=1008n" playsinline autoplay muted loop preload="metadata"><source src="static/videos/pip_dist_5m.mp4?v=1008n" type="video/mp4"></video>
+        <p class="video-caption">5 m throw</p></div>
+      <div class="video-card">
+        <video id="m-pip_dist_7m" poster="static/images/posters/pip_dist_7m.jpg?v=1008n" playsinline autoplay muted loop preload="metadata"><source src="static/videos/pip_dist_7m.mp4?v=1008n" type="video/mp4"></video>
+        <p class="video-caption">7 m throw</p></div>
+    </div>
+    <p class="inset-note">Inset: the robot's onboard camera view.</p>
+    <div class="ego-wrap">
+      <button class="ego-toggle" type="button" aria-expanded="false" aria-controls="ego-dist"><i class="fas fa-video"></i> <span>Click for egocentric view</span></button>
+      <div class="ego-panel" id="ego-dist" hidden>
+      <div class="ego-grid cols-3">
+        <figure class="ego-item"><video class="ego-video" data-master="m-pip_dist_2m" muted playsinline loop preload="none" poster="static/images/posters/pip_dist_2m_ego.jpg?v=1008n"><source src="static/videos/pip_dist_2m_ego.mp4?v=1008n" type="video/mp4"></video><figcaption>2.5 m throw · onboard camera</figcaption></figure>
+        <figure class="ego-item"><video class="ego-video" data-master="m-pip_dist_5m" muted playsinline loop preload="none" poster="static/images/posters/pip_dist_5m_ego.jpg?v=1008n"><source src="static/videos/pip_dist_5m_ego.mp4?v=1008n" type="video/mp4"></video><figcaption>5 m throw · onboard camera</figcaption></figure>
+        <figure class="ego-item"><video class="ego-video" data-master="m-pip_dist_7m" muted playsinline loop preload="none" poster="static/images/posters/pip_dist_7m_ego.jpg?v=1008n"><source src="static/videos/pip_dist_7m_ego.mp4?v=1008n" type="video/mp4"></video><figcaption>7 m throw · onboard camera</figcaption></figure>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIZE + PAYLOAD ============ -->
+<section class="section wide">
+  <div class="container">
+    <h3 class="title is-3 has-text-centered">Reflex handles different box sizes and payloads</h3>
+    <p class="ego-only"><i class="fas fa-video"></i> Egocentric only</p>
+    <div class="video-grid">
+      <div class="video-card">
+        <video id="m-pip_size_small" poster="static/images/posters/pip_size_small.jpg?v=1008n" playsinline autoplay muted loop preload="metadata"><source src="static/videos/pip_size_small.mp4?v=1008n" type="video/mp4"></video>
+        <p class="video-caption">Small parcel (22&times;21&times;15 cm)</p></div>
+      <div class="video-card">
+        <video id="m-pip_size_regular" poster="static/images/posters/pip_size_regular.jpg?v=1008n" playsinline autoplay muted loop preload="metadata"><source src="static/videos/pip_size_regular.mp4?v=1008n" type="video/mp4"></video>
+        <p class="video-caption">Regular box (31&times;26&times;21 cm)</p></div>
+      <div class="video-card">
+        <video id="m-pip_size_large" poster="static/images/posters/pip_size_large.jpg?v=1008n" playsinline autoplay muted loop preload="metadata"><source src="static/videos/pip_size_large.mp4?v=1008n" type="video/mp4"></video>
+        <p class="video-caption">Large carton (46&times;41&times;32 cm)</p></div>
+    </div>
+    <div class="ego-wrap">
+      <button class="ego-toggle" type="button" aria-expanded="false" aria-controls="ego-size"><i class="fas fa-video"></i> <span>Click for egocentric view</span></button>
+      <div class="ego-panel" id="ego-size" hidden>
+      <div class="ego-grid cols-3">
+        <figure class="ego-item"><video class="ego-video" data-master="m-pip_size_small" muted playsinline loop preload="none" poster="static/images/posters/pip_size_small_ego.jpg?v=1008n"><source src="static/videos/pip_size_small_ego.mp4?v=1008n" type="video/mp4"></video><figcaption>Small parcel · onboard camera</figcaption></figure>
+        <figure class="ego-item"><video class="ego-video" data-master="m-pip_size_regular" muted playsinline loop preload="none" poster="static/images/posters/pip_size_regular_ego.jpg?v=1008n"><source src="static/videos/pip_size_regular_ego.mp4?v=1008n" type="video/mp4"></video><figcaption>Regular box · onboard camera</figcaption></figure>
+        <figure class="ego-item"><video class="ego-video" data-master="m-pip_size_large" muted playsinline loop preload="none" poster="static/images/posters/pip_size_large_ego.jpg?v=1008n"><source src="static/videos/pip_size_large_ego.mp4?v=1008n" type="video/mp4"></video><figcaption>Large carton · onboard camera</figcaption></figure>
+      </div>
+      </div>
+    </div>
+    <div class="video-grid payload-grid">
+      <div class="video-card is-wide">
+        <video poster="static/images/posters/payload_triptych.jpg?v=1008n" playsinline autoplay muted loop preload="metadata"><source src="static/videos/payload_triptych.mp4?v=1008n" type="video/mp4"></video>
+        <p class="video-caption">Payloads of 0.5, 1 and 2 kg, each weighed before the throw</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OFFSET ============ -->
+<section class="section wide">
+  <div class="container">
+    <h3 class="title is-3 has-text-centered">Reflex steps to catch off-target throws</h3>
+    <p class="ego-only"><i class="fas fa-video"></i> Egocentric only</p>
+    <div class="video-grid">
+      <div class="video-card is-wide">
+        <video id="m-offset_twoview" poster="static/images/posters/offset_twoview.jpg?v=1008n" playsinline autoplay muted loop preload="metadata"><source src="static/videos/offset_twoview.mp4?v=1008n" type="video/mp4"></video>
+        <p class="video-caption">Two off-target throws, seen from behind the robot</p></div>
+    </div>
+    <div class="ego-wrap">
+      <button class="ego-toggle" type="button" aria-expanded="false" aria-controls="ego-offset"><i class="fas fa-video"></i> <span>Click for egocentric view</span></button>
+      <div class="ego-panel" id="ego-offset" hidden>
+      <div class="ego-grid cols-1">
+        <figure class="ego-item"><video class="ego-video" data-master="m-offset_twoview" muted playsinline loop preload="none" poster="static/images/posters/pip_offset_a_ego.jpg?v=1008n"><source src="static/videos/pip_offset_a_ego.mp4?v=1008n" type="video/mp4"></video><figcaption>Throw 1 · onboard camera</figcaption></figure>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAIN ============ -->
+<section class="section wide">
+  <div class="container">
+    <h3 class="title is-3 has-text-centered">From catching to carrying and handing over</h3>
+    <p class="ego-only"><i class="fas fa-video"></i> Egocentric only</p>
+    <div class="video-grid">
+      <div class="video-card is-wide">
+        <video id="m-pip_chain" poster="static/images/posters/pip_chain.jpg?v=1008n" playsinline autoplay muted loop controls preload="metadata"><source src="static/videos/pip_chain.mp4?v=1008n" type="video/mp4"></video>
+        <p class="video-caption">Catch, carry, hand over, and return for the next throw</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESULTS: paper Fig. 5 (lateral landing offset) ============ -->
+<section class="section wide">
+  <div class="container">
+    <h3 class="title is-3 has-text-centered">Catch success in simulation as throws land farther to the side</h3>
+    <div class="content narrow has-text-justified">
+      <p class="abstract-text">
+        Simulated catch success versus lateral landing offset (from the paper; 640 throws per point, 95% intervals).
+        The shaded bands mark the offsets seen in training.
+      </p>
+    </div>
+    <div class="figure-wide plot-fig"><img src="static/images/fig_lateral_offset.png?v=1008n" alt="Catch rate versus lateral landing offset in simulation for Reflex and baselines"><a class="fig-open" href="static/images/fig_lateral_offset.png?v=1008n" target="_blank" rel="noopener"><i class="fas fa-magnifying-glass-plus"></i> Open full-size figure</a></div>
+  </div>
+</section>
+
+<!-- ============ INTERACTIVE DEMO: one factor at a time (precomputed Isaac Sim replays) ============ -->
+<section class="section" id="playground-section">
+  <div class="container">
+    <h3 class="title is-3 has-text-centered">Interactive demo: throw a box at Reflex</h3>
+    <div class="content narrow has-text-justified">
+      <p class="abstract-text">
+        Pick one factor at a time (box size, throw distance, payload, or lateral landing offset) while the others stay at their defaults,
+        press Launch, and orbit the 3D scene to watch the whole-body catch.
+        Precomputed Isaac Sim rollouts of the full visual pipeline (rendered RGB-D &rarr; visual encoder &rarr; policy),
+        visual encoder trained with throws up to 7 m. Each Launch replays one of the recorded successful catches;
+        overall success rates are reported in the paper.
+      </p>
+    </div>
+    <link rel="stylesheet" href="static/playground/playground.css?v=1008n">
+    <div id="playground" class="playground" data-src="./"></div>
+    <p class="pg-hint">drag to orbit &middot; scroll to zoom &middot; right-drag to pan &middot; t = 0 at release</p>
+  </div>
+</section>
+<script type="importmap">
+  { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/" } }
+</script>
+<script type="module" src="static/playground/playground.js?v=1008n"></script>
+
+<!-- ============ BIBTEX ============ -->
+<section class="section" id="BibTeX">
+  <div class="container content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{jia2026reflex,
+  title   = {Reflex: Visually Grounded Reactive Humanoid Control},
+  author  = {Jia, Taoyang and Huang, Weikai and Song, Linxin and Darlington, Jared and
+             Zhao, Jieyu and Wang, Yue and Duan, Jiafei and Ren, Zhongzheng and Krishna, Ranjay},
+  journal = {arXiv preprint},
+  year    = {2026}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container has-text-centered">
+    <p>Page template borrowed from <a href="https://nerfies.github.io" target="_blank"><span class="dnerf">Nerfies</span></a>.</p>
+  </div>
+</footer>
+
+<script>
+// "Show egocentric view": larger onboard-camera videos, kept in sync with the main clip above (main clips are unchanged, inset kept).
+(function () {
+  const egos = [];
+  document.querySelectorAll('.ego-toggle').forEach(btn => {
+    const panel = document.getElementById(btn.getAttribute('aria-controls'));
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') !== 'true';
+      btn.setAttribute('aria-expanded', open);
+            panel.hidden = !open;
+      panel.querySelectorAll('video.ego-video').forEach(v => {
+        const m = document.getElementById(v.dataset.master);
+        if (open) { v.preload = 'auto'; if (m) v.currentTime = m.currentTime; v.play().catch(() => {}); }
+        else v.pause();
+      });
+    });
+  });
+  document.querySelectorAll('video.ego-video').forEach(v => egos.push(v));
+  setInterval(() => {                       // soft sync: follow the main clip's clock
+    egos.forEach(v => {
+      if (v.paused || v.closest('.ego-panel').hidden) return;
+      const m = document.getElementById(v.dataset.master);
+      if (!m || !isFinite(m.currentTime)) return;
+      if (Math.abs(v.currentTime - m.currentTime) > 0.12 && m.currentTime < v.duration) v.currentTime = m.currentTime;
+      if (m.paused !== v.paused) m.paused ? v.pause() : v.play().catch(() => {});
+    });
+  }, 250);
+})();
+</script>
+</body>
+</html>
