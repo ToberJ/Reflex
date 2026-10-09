@@ -1,8 +1,8 @@
 <h1 align="center"><code>Reflex</code>:<br>Visually Grounded Reactive Humanoid Control</h1>
 
 <p align="center">
-  <a href="https://toberj.github.io/humanoid-box-catch-web/v2/static/paper/reflex.pdf"><img src="https://img.shields.io/badge/Paper-PDF-b31b1b.svg" alt="Paper"></a>
-  <a href="https://toberj.github.io/humanoid-box-catch-web/v2/"><img src="https://img.shields.io/badge/Project%20Page-Reflex-6b4fa0.svg" alt="Project page"></a>
+  <a href="https://toberj.github.io/reflex/static/paper/reflex.pdf"><img src="https://img.shields.io/badge/Paper-PDF-b31b1b.svg" alt="Paper"></a>
+  <a href="https://toberj.github.io/reflex/"><img src="https://img.shields.io/badge/Project%20Page-Reflex-6b4fa0.svg" alt="Project page"></a>
 </p>
 
 <p align="center">
@@ -39,8 +39,8 @@
 <p align="center">
   Training and evaluation code, pretrained checkpoints and the real-robot deployment stack are being prepared for release.<br>
   <b>Watch</b> this repository to be notified. In the meantime, see the
-  <a href="https://toberj.github.io/humanoid-box-catch-web/v2/static/paper/reflex.pdf">paper</a> and the
-  <a href="https://toberj.github.io/humanoid-box-catch-web/v2/">project page</a>.
+  <a href="https://toberj.github.io/reflex/static/paper/reflex.pdf">paper</a> and the
+  <a href="https://toberj.github.io/reflex/">project page</a>.
 </p>
 
 <br>
