@@ -21,6 +21,34 @@ const ROBOT = new URL(ROOT.dataset.robot || '../sim3d/robot/', HERE);
 const ACCENT = getComputedStyle(ROOT).getPropertyValue('--pg-accent').trim() || '#6b4fa0';
 const up = new THREE.Vector3(0, 0, 1);
 
+// ---------- robot camera (egocentric inset, top-left of every viewer) ----------
+// There are no recorded camera images in the demo data: the inset is RE-RENDERED live from the robot camera's pose,
+// using the same mount and intrinsics as the simulated RGB-D camera the visual encoder consumed:
+//  * mount: torso_link + CAM_OFF (0.02, 0, 0.62) m, optical axis = torso +x pitched up CAM_PITCH_UP = 10 deg
+//    (box_catch/env/box_v36_saferobust_estimator.py:302-303; pose update render_latent_policy_web.py:263-265:
+//    cam_quat = torso_quat * rotY(-CAM_PITCH_UP), Isaac "world" camera convention +x forward / +z up)
+//  * intrinsics: 192x144, horizontal_aperture 20.955, focal = aperture/2/tan(53 deg) -> horizontal HALF-angle 53 deg
+//    (full 106 deg); vertical_aperture = horizontal * 144/192 (isaaclab camera.py:130-131) -> vertical FOV
+//    2*atan(0.75*tan 53 deg) = 89.7 deg (render_latent_policy_web.py:44,204-207; train_amp_latent.py:40,200-204)
+const EGO = { off: [0.02, 0.0, 0.62], pitchUp: THREE.MathUtils.degToRad(10), aspect: 192 / 144,
+  fovV: 2 * THREE.MathUtils.radToDeg(Math.atan((144 / 192) * Math.tan(THREE.MathUtils.degToRad(53)))),
+  near: 0.05, far: 50, sky: 0xd5d9df };
+const VIEW_SHIFT = { side: { x: 0.13, y: 0.05, zoom: 0.88 }, behind: { x: 0.05, y: 0.0, zoom: 0.85 },   // fractions of the viewer size
+  sidePhone: { x: 0.17, y: 0.07, zoom: 0.85 } };   // narrow viewers (< NARROW_PX): phones and the 1100-1215 px two-column desktop
+const EGO_SCALE = 0.8;   // user 10-08: inset 20 % smaller than the first version (all size limits below are scaled by this)
+const NARROW_PX = 440;   // one threshold for the inset size, the main-view framing and the .is-narrow label / play-button styles
+const EGO_TIP = "Re-rendered live in this viewer from the robot head camera's pose (same mount and 106\u00b0\u00d790\u00b0 field of view " +
+  'as the simulated RGB-D camera the policy used); not the recorded camera images.';
+// alpha mask so the inset's GL pixels match the CSS frame (rounded top corners; the caption bar sits below the image)
+function roundMask(w, h, r) {
+  const c = document.createElement('canvas'); c.width = Math.max(1, w); c.height = Math.max(1, h);
+  const g = c.getContext('2d'); g.fillStyle = '#000'; g.fillRect(0, 0, c.width, c.height);
+  g.fillStyle = '#fff'; g.beginPath();
+  if (g.roundRect) g.roundRect(0, 0, c.width, c.height, [r, r, 0, 0]); else g.rect(0, 0, c.width, c.height);
+  g.fill();
+  return c;
+}
+
 // ---------- card definitions (labels / icons; cells and options come from index.json) ----------
 const CARDS = [
   { key: 'size', icon: 'fa-box-open', panel: 'Select Box Size', tileIcon: 'fa-box', scale: [0.85, 1.2, 1.6],
@@ -155,9 +183,37 @@ class Viewer {
     s.add(this.releaseDot);
     this.guide = new THREE.Line(new THREE.BufferGeometry(), new THREE.LineDashedMaterial({ color: 0xc4b3e6, dashSize: 0.18, gapSize: 0.14, transparent: true, opacity: 0.9 }));
     this.guide.frustumCulled = false; s.add(this.guide);
+    // replay-only annotations (trail, release dot, floor guide) live on layer 1: drawn in the main view, not in the robot camera
+    [this.trail, this.releaseDot, this.guide].forEach(o => o.layers.set(1));
+    this.camera.layers.enable(1);
+
+    // robot camera: rigidly attached to torso_link (see EGO above)
+    const ti = idx.bodies.indexOf('torso_link');
+    if (ti >= 0) {
+      const ego = this.egoCam = new THREE.PerspectiveCamera(EGO.fovV, EGO.aspect, EGO.near, EGO.far);
+      ego.position.fromArray(EGO.off);
+      // Isaac camera frame (+x optical axis, +z up) = torso frame rotated about +y by -pitchUp;
+      // three.js camera axes in that frame: right = -y, up = +z, back = -x
+      const qPitch = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 1, 0), -EGO.pitchUp);
+      const qAxes = new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(
+        new THREE.Vector3(0, -1, 0), new THREE.Vector3(0, 0, 1), new THREE.Vector3(-1, 0, 0)));
+      ego.quaternion.copy(qPitch).multiply(qAxes);
+      this.robot.bodies[ti].add(ego);
+      this.egoRT = new THREE.WebGLRenderTarget(1, 1, { samples: 4, type: THREE.HalfFloatType });
+      this.egoMaskTex = new THREE.CanvasTexture(roundMask(1, 1, 0));
+      this.egoQuad = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({
+        map: this.egoRT.texture, alphaMap: this.egoMaskTex, transparent: true, depthTest: false, depthWrite: false, toneMapped: false }));
+      this.hudScene = new THREE.Scene(); this.hudScene.add(this.egoQuad);
+      this.hudCam = new THREE.OrthographicCamera(0, 1, 1, 0, -1, 1);
+      this.egoFrame = el('div', { class: 'pg-ego', hidden: true },   // caption bar below the image, so it never covers the box
+        el('div', { class: 'pg-ego-bar', title: EGO_TIP, tabindex: 0, 'aria-label': 'Robot camera view. ' + EGO_TIP },
+          icon('fa-video')));   // user 10-08: icon only, no caption text; the re-rendered note stays in the tooltip / aria-label
+      host.after(this.egoFrame);
+    }
 
     this.visible = true; this.dirty = true;
     new ResizeObserver(() => this.resize()).observe(host);
+    if (this.egoFrame && document.fonts) document.fonts.ready.then(() => this.fitLabel());   // web font changes the caption width
     new IntersectionObserver(e => { this.visible = e[0].isIntersecting; if (this.visible) this.dirty = true; }).observe(host);
     this.resize();
   }
@@ -165,8 +221,35 @@ class Viewer {
     const w = this.host.clientWidth, h = this.host.clientHeight;
     if (!w || !h) return;
     this.renderer.setSize(w, h, false);
-    this.camera.aspect = w / h; this.camera.updateProjectionMatrix(); this.dirty = true;
+    this.camera.aspect = w / h; this.dirty = true;
+    // the inset covers the top-left: slide the main view's image down-right (the orbit pivot stays the same) and widen a bit,
+    // so the thrower and the start of the arc are not hidden behind it (default framings put the thrower left of centre)
+    const narrow = w < NARROW_PX;
+    const vEl = this.host.closest('.pg-viewer'); if (vEl) vEl.classList.toggle('is-narrow', narrow);
+    const sh = this.egoCam ? (VIEW_SHIFT[this.view] || (narrow ? VIEW_SHIFT.sidePhone : VIEW_SHIFT.side)) : null;
+    if (sh) { this.camera.zoom = sh.zoom; this.camera.setViewOffset(w, h, -sh.x * w, -sh.y * h, w, h); }
+    else this.camera.clearViewOffset();
+    this.camera.updateProjectionMatrix();
+    if (this.egoCam) {   // inset: 0.8 x (~40 % of the viewer width; 38 % and at most 47 % of the height when narrow; 30 % in fullscreen), 4:3 like the 192x144 camera
+      const full = !!(document.fullscreenElement || document.webkitFullscreenElement);
+      const frac = full ? 0.3 : (narrow ? 0.38 : 0.4), m = narrow ? 8 : 10, rad = 8, bar = narrow ? 14 : 18;
+      const ew = Math.round(EGO_SCALE * (narrow ? Math.min(frac * w, (0.47 * h - m - bar) * EGO.aspect)
+                                               : Math.min(frac * w, (h - 2 * m) * EGO.aspect * 0.62))), eh = Math.round(ew / EGO.aspect);
+      const pr = this.renderer.getPixelRatio();
+      this.egoRT.setSize(Math.round(ew * pr), Math.round(eh * pr));
+      // a CanvasTexture is allocated once with immutable storage (three r169 texStorage2D): a new size needs a new texture
+      const oldMask = this.egoMaskTex;
+      this.egoMaskTex = this.egoQuad.material.alphaMap = new THREE.CanvasTexture(roundMask(Math.round(ew * pr), Math.round(eh * pr), rad * pr));
+      oldMask.dispose();
+      Object.assign(this.hudCam, { left: 0, right: w, top: h, bottom: 0 }); this.hudCam.updateProjectionMatrix();
+      this.egoQuad.position.set(m + ew / 2, h - m - eh / 2, 0); this.egoQuad.scale.set(ew, eh, 1);
+      Object.assign(this.egoFrame.style, { left: m + 'px', top: m + 'px', width: ew + 'px', height: (eh + bar) + 'px', borderRadius: rad + 'px' });
+      this.egoFrame.firstChild.style.height = bar + 'px';
+      this.fitLabel();
+    }
   }
+  fitLabel() {}   // the caption is an icon only now (user 10-08), nothing to fit
+
   setThrow(rec, arr) {
     this.rec = rec; this.arr = arr;
     const nb = this.nb, st = (nb + 1) * 7, fps = this.idx.fps;
@@ -244,7 +327,17 @@ class Viewer {
     return T >= this.reveal;
   }
   render() {
-    if (this.visible && this.dirty) { this.renderer.render(this.scene, this.camera); this.dirty = false; }
+    if (!(this.visible && this.dirty)) return;
+    const r = this.renderer;
+    r.render(this.scene, this.camera);
+    if (this.egoCam && this.rec) {   // robot camera, same scene and same playback frame, composited into the top-left corner
+      r.setRenderTarget(this.egoRT); r.setClearColor(EGO.sky, 1);
+      r.render(this.scene, this.egoCam);
+      r.setRenderTarget(null); r.setClearColor(0x000000, 0);
+      r.autoClear = false; r.render(this.hudScene, this.hudCam); r.autoClear = true;
+      if (this.egoFrame.hidden) { this.egoFrame.hidden = false; this.fitLabel(); }
+    }
+    this.dirty = false;
   }
 }
 
@@ -335,9 +428,8 @@ class Card {
     this.overlayPlay.addEventListener('click', () => this.launch());
     this.canvasBox = el('div', { class: 'pg-canvas' }, this.msg);
     this.viewerEl = el('div', { class: 'pg-viewer' }, this.canvasBox,
-      el('div', { class: 'pg-hud pg-hud-tl' }, this.badge),
       el('div', { class: 'pg-hud pg-hud-tr' }, el('span', { class: 'pg-seg' }, this.sp05, this.sp1), this.btnReset),
-      el('div', { class: 'pg-hud pg-hud-bl' }, this.caption),
+      el('div', { class: 'pg-hud pg-hud-bl' }, this.badge, this.caption),   // top-left is the robot-camera inset
       el('div', { class: 'pg-hud pg-hud-br' }, this.timeEl),
       this.overlayPlay);
     this.root = el('div', { class: 'pg-card', id: 'pg-' + d.key }, head,
@@ -373,7 +465,7 @@ class Card {
     this.viewerP = (async () => {
       const assets = await loadRobotAssets();
       this.viewer = new Viewer(this.canvasBox, this.idx, assets);
-      if (this.def.key === 'offset') this.viewer.view = 'behind';
+      if (this.def.key === 'offset') { this.viewer.view = 'behind'; this.viewer.resize(); }
       ROOT.dispatchEvent(new CustomEvent('pg-viewer'));
       await this.loadCurrent();
     })().catch(e => { console.error(e); this.msg.textContent = 'could not load the 3D replay'; });
